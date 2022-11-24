@@ -6,6 +6,7 @@ const {
   DB_NAME,
   DB_HOST,
   DB_DIALECT = "postgres",
+  DB_PORT,
 } = process.env;
 
 module.exports = {
@@ -15,6 +16,7 @@ module.exports = {
     database: DB_NAME,
     host: DB_HOST,
     dialect: DB_DIALECT,
+    port: DB_PORT,
     logging: false,
   },
   test: {
@@ -23,6 +25,7 @@ module.exports = {
     database: DB_NAME,
     host: DB_HOST,
     dialect: DB_DIALECT,
+    port: DB_PORT,
     logging: false,
   },
   production: {
@@ -31,6 +34,7 @@ module.exports = {
     database: DB_NAME,
     host: DB_HOST,
     dialect: DB_DIALECT,
+    port: DB_PORT,
     logging: false,
   },
 };
