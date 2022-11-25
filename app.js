@@ -9,6 +9,8 @@ const { PORT } = process.env;
 
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
 app.use(router);
 app.use((req, res, next) => {
   return res.status(404).json({

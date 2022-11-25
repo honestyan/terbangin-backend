@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const googleOauth2 = require("../utils/google");
 const userType = require("../utils/userType");
+const utilEmail = require('../utils/email');
 
 module.exports = {
   register: async (req, res, next) => {
@@ -149,4 +150,111 @@ module.exports = {
       next(err);
     }
   },
+
+  changePassword: async (req, res, next) => {
+    try{
+      const { oldPassword, newPassword, confirmNewPassword } = req.body;
+      const existUser = await User.findOne({ where : {id:req.user.id}});
+
+      if (!existUser) return res.status(404).json({ success: false, message: 'User not found!' });
+
+      const passwordCheck = await bcrypt.compare(oldPassword, existUser.password);
+      if (!passwordCheck) {
+        return res.status(400).json({
+            status: false,
+            message: 'old password doesnt match!'
+        });
+      }
+      if (newPassword !== confirmNewPassword) {
+        return res.status(422).json({
+            status: false,
+            message: 'new password and confirm new password doesnt match!'
+        });
+      }
+      const encryptedPassword = await bcrypt.hash(newPassword, 10);
+      const updatedUser = await User.update({password: encryptedPassword}, {where: {id: existUser.id}});
+      return res.status(200).json({
+          status: true,
+          message: 'success',
+          data: {
+            id: existUser.id,
+            email: existUser.email
+          }
+      });
+    }catch(err){
+      next(err);
+    }
+  },
+  // forgotPassword: async(req,res, next)=>{
+  //   try{
+  //     const {email} = req.body;
+
+  //     const user = await User.findOne({where : {email}})
+  //     if (user) {
+  //       const payload = { user_id: user.id };
+  //       const token = jwt.sign(payload, JWT_SIGNATURE_KEY);
+  //       const link = `http://localhost:3000/auth/reset-password?token=${token}`;
+  //       htmlEmail = await utilEmail.getHtml('reset-password.ejs', { name: user.name, link: link });
+  //       await utilEmail.sendEmail(user.email, 'Reset your password', htmlEmail);
+  //     }
+  //     return res.status(200).json({
+  //       status: true,
+  //       message: 'success',
+  //       data: {
+  //         id:user.id,
+  //         email:user.email
+  //       }
+  //     });
+  //   }catch(err){
+  //     next(err);
+  //   }
+  // },
+  //selain email, link tampilan reset password juga dikirim
+  //di form reset, token dikirm lewat query
+  forgotPasswordBE: async(req,res, next)=>{
+    try{
+      const {email, linkreset} = req.body;
+      const user = await User.findOne({where : {email}})
+      if (user) {
+        const payload = { user_id: user.id };
+        const token = jwt.sign(payload, JWT_SIGNATURE_KEY);
+        const link = `${linkreset}?token=${token}`;
+        htmlEmail = await utilEmail.getHtml('reset-password.ejs', { name: user.name, link: link });
+        await utilEmail.sendEmail(user.email, 'Reset your password', htmlEmail);
+      }
+      return res.status(200).json({
+        status: true,
+        message: 'success',
+        data: {
+          id:user.id,
+          email:user.email
+        }
+      });
+    }catch(err){
+      next(err);
+    }
+  },
+
+  resetPassword: async(req, res, next)=>{
+    try{
+      const { token } = req.query;
+      const { new_password, confirm_new_password } = req.body;
+
+      if (!token) return res.status(401).json({ success: false, message: 'token not found' });
+
+      if (new_password != confirm_new_password) return res.status(401).json({ success: false, message: 'password doesn\'t match!' });
+
+      const payload = jwt.verify(token, JWT_SIGNATURE_KEY);
+      const encryptedPassword = await bcrypt.hash(new_password, 10);
+      const user = await User.update({ password: encryptedPassword }, { where: { id: payload.user_id } });
+      return res.status(200).json({
+        status: true,
+        message: 'success',
+        data: user
+    });
+    }catch(err){
+      next(err)
+    }
+  },
+
 };
