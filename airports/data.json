@@ -1,0 +1,1234 @@
+[
+  {
+    "iataCode": "BIK",
+    "icaoCode": "WABB",
+    "name": "Biak Frans Kaisiepo",
+    "alpha2countryCode": "ID",
+    "latitude": -1.19,
+    "longitude": 136.108
+  },
+  {
+    "iataCode": "BJG",
+    "icaoCode": null,
+    "name": "Kota Mobagu Mopait",
+    "alpha2countryCode": "ID",
+    "latitude": 0.9333,
+    "longitude": 124.167
+  },
+  {
+    "iataCode": "BJK",
+    "icaoCode": null,
+    "name": "Nangasuri Aru Island Benjina",
+    "alpha2countryCode": "ID",
+    "latitude": -6.0833,
+    "longitude": 134.25
+  },
+  {
+    "iataCode": "BJW",
+    "icaoCode": "WATB",
+    "name": "Bajawa Soa",
+    "alpha2countryCode": "ID",
+    "latitude": -8.7078,
+    "longitude": 121.058
+  },
+  {
+    "iataCode": "SOQ",
+    "icaoCode": "WASS",
+    "name": "Sorong Domine Eduard Osok",
+    "alpha2countryCode": "ID",
+    "latitude": -0.9264,
+    "longitude": 131.121
+  },
+  {
+    "iataCode": "SQN",
+    "icaoCode": "WAPN",
+    "name": "Sanana Emalamo",
+    "alpha2countryCode": "ID",
+    "latitude": -2.1008,
+    "longitude": 125.966
+  },
+  {
+    "iataCode": "SQR",
+    "icaoCode": "WAWS",
+    "name": "Soroako",
+    "alpha2countryCode": "ID",
+    "latitude": -2.5667,
+    "longitude": 120.75
+  },
+  {
+    "iataCode": "BUW",
+    "icaoCode": "WAWB",
+    "name": "Baubau Betoambari",
+    "alpha2countryCode": "ID",
+    "latitude": -5.4875,
+    "longitude": 122.569
+  },
+  {
+    "iataCode": "SXK",
+    "icaoCode": "WAPI",
+    "name": "Saumlaki Olilit",
+    "alpha2countryCode": "ID",
+    "latitude": -7.9881,
+    "longitude": 131.305
+  },
+  {
+    "iataCode": "BXB",
+    "icaoCode": "WASO",
+    "name": "Irarutu Babo",
+    "alpha2countryCode": "ID",
+    "latitude": -2.535,
+    "longitude": 133.439
+  },
+  {
+    "iataCode": "TAX",
+    "icaoCode": null,
+    "name": "Taliabu",
+    "alpha2countryCode": "ID",
+    "latitude": -1.6433,
+    "longitude": 124.561
+  },
+  {
+    "iataCode": "TIM",
+    "icaoCode": "WAYY",
+    "name": "Tembagapura/Timika Moses Kilangin",
+    "alpha2countryCode": "ID",
+    "latitude": -4.5283,
+    "longitude": 136.887
+  },
+  {
+    "iataCode": "TQQ",
+    "icaoCode": "WAWC",
+    "name": "Tomia Maranggo",
+    "alpha2countryCode": "ID",
+    "latitude": -5.7669,
+    "longitude": 123.919
+  },
+  {
+    "iataCode": "TTE",
+    "icaoCode": "WAEE",
+    "name": "Ternate Sultan Babullah",
+    "alpha2countryCode": "ID",
+    "latitude": 0.8314,
+    "longitude": 127.381
+  },
+  {
+    "iataCode": "TTR",
+    "icaoCode": "WAFT",
+    "name": "Tana Toraja Pongtiku",
+    "alpha2countryCode": "ID",
+    "latitude": -3.0458,
+    "longitude": 119.824
+  },
+  {
+    "iataCode": "TXM",
+    "icaoCode": "WAST",
+    "name": "Teminabuan",
+    "alpha2countryCode": "ID",
+    "latitude": -1.45,
+    "longitude": 132.017
+  },
+  {
+    "iataCode": "UGU",
+    "icaoCode": null,
+    "name": "Bilogai",
+    "alpha2countryCode": "ID",
+    "latitude": -3.7333,
+    "longitude": 137.033
+  },
+  {
+    "iataCode": "UOL",
+    "icaoCode": "WAFY",
+    "name": "Buol Pogogul",
+    "alpha2countryCode": "ID",
+    "latitude": 1.1047,
+    "longitude": 121.415
+  },
+  {
+    "iataCode": "UPG",
+    "icaoCode": "WAAA",
+    "name": "Makassar Sultan Hasanuddin",
+    "alpha2countryCode": "ID",
+    "latitude": -5.0617,
+    "longitude": 119.554
+  },
+  {
+    "iataCode": "DOB",
+    "icaoCode": "WAPD",
+    "name": "Dobo Rar Gwamar",
+    "alpha2countryCode": "ID",
+    "latitude": -5.7728,
+    "longitude": 134.211
+  },
+  {
+    "iataCode": "ENE",
+    "icaoCode": "WATE",
+    "name": "Ende H.Hasan Aroeboesman",
+    "alpha2countryCode": "ID",
+    "latitude": -8.8492,
+    "longitude": 121.661
+  },
+  {
+    "iataCode": "EWI",
+    "icaoCode": "WAYE",
+    "name": "Enarotali",
+    "alpha2countryCode": "ID",
+    "latitude": -3.9333,
+    "longitude": 136.367
+  },
+  {
+    "iataCode": "WBA",
+    "icaoCode": "WAPV",
+    "name": "Seram Island Wahai",
+    "alpha2countryCode": "ID",
+    "latitude": -2.8167,
+    "longitude": 129.483
+  },
+  {
+    "iataCode": "WET",
+    "icaoCode": "WABG",
+    "name": "Waghete",
+    "alpha2countryCode": "ID",
+    "latitude": -4.05,
+    "longitude": 136.267
+  },
+  {
+    "iataCode": "FKQ",
+    "icaoCode": "WASF",
+    "name": "Fak Fak Torea",
+    "alpha2countryCode": "ID",
+    "latitude": -2.9203,
+    "longitude": 132.267
+  },
+  {
+    "iataCode": "WNI",
+    "icaoCode": "WAWD",
+    "name": "Wangiwangi Island Matahora",
+    "alpha2countryCode": "ID",
+    "latitude": -5.2906,
+    "longitude": 123.635
+  },
+  {
+    "iataCode": "FOO",
+    "icaoCode": "WABF",
+    "name": "Numfoor",
+    "alpha2countryCode": "ID",
+    "latitude": -0.9333,
+    "longitude": 134.867
+  },
+  {
+    "iataCode": "WSR",
+    "icaoCode": "WAUW",
+    "name": "Wasior",
+    "alpha2countryCode": "ID",
+    "latitude": -2.7667,
+    "longitude": 134.5
+  },
+  {
+    "iataCode": "GAV",
+    "icaoCode": null,
+    "name": "Gag Island",
+    "alpha2countryCode": "ID",
+    "latitude": -0.45,
+    "longitude": 130.883
+  },
+  {
+    "iataCode": "GEB",
+    "icaoCode": "WAEJ",
+    "name": "Gebe",
+    "alpha2countryCode": "ID",
+    "latitude": -0.0833,
+    "longitude": 129.333
+  },
+  {
+    "iataCode": "GLX",
+    "icaoCode": "WAEG",
+    "name": "Galela Gamarmalamo",
+    "alpha2countryCode": "ID",
+    "latitude": 1.8378,
+    "longitude": 127.786
+  },
+  {
+    "iataCode": "GTO",
+    "icaoCode": "WAMG",
+    "name": "Gorontalo Tolotio",
+    "alpha2countryCode": "ID",
+    "latitude": 0.6372,
+    "longitude": 122.851
+  },
+  {
+    "iataCode": "INX",
+    "icaoCode": "WASI",
+    "name": "Inanwatan",
+    "alpha2countryCode": "ID",
+    "latitude": -2.1333,
+    "longitude": 132.167
+  },
+  {
+    "iataCode": "ZRI",
+    "icaoCode": "WABO",
+    "name": "Serui S. Condronegoro",
+    "alpha2countryCode": "ID",
+    "latitude": -1.8742,
+    "longitude": 136.24
+  },
+  {
+    "iataCode": "JIO",
+    "icaoCode": "WAPM",
+    "name": "Tiakur Jos Orna Imsula",
+    "alpha2countryCode": "ID",
+    "latitude": -8.1392,
+    "longitude": 127.903
+  },
+  {
+    "iataCode": "KAZ",
+    "icaoCode": "WAEK",
+    "name": "Kaubang",
+    "alpha2countryCode": "ID",
+    "latitude": 1.1847,
+    "longitude": 127.896
+  },
+  {
+    "iataCode": "KBX",
+    "icaoCode": "WASU",
+    "name": "Ayamaru Kambuaya",
+    "alpha2countryCode": "ID",
+    "latitude": -1.3167,
+    "longitude": 132.288
+  },
+  {
+    "iataCode": "KDI",
+    "icaoCode": "WAWW",
+    "name": "Kendari Halu Oleo",
+    "alpha2countryCode": "ID",
+    "latitude": -4.0817,
+    "longitude": 122.418
+  },
+  {
+    "iataCode": "KEQ",
+    "icaoCode": "WAUK",
+    "name": "Kebar",
+    "alpha2countryCode": "ID",
+    "latitude": -0.6333,
+    "longitude": 133.117
+  },
+  {
+    "iataCode": "KNG",
+    "icaoCode": "WASK",
+    "name": "Utarom Kaimana",
+    "alpha2countryCode": "ID",
+    "latitude": -3.6444,
+    "longitude": 133.696
+  },
+  {
+    "iataCode": "KOE",
+    "icaoCode": "WATT",
+    "name": "Kupang Eltari",
+    "alpha2countryCode": "ID",
+    "latitude": -10.1717,
+    "longitude": 123.671
+  },
+  {
+    "iataCode": "KOX",
+    "icaoCode": "WABN",
+    "name": "Kokonao",
+    "alpha2countryCode": "ID",
+    "latitude": -4.7108,
+    "longitude": 136.435
+  },
+  {
+    "iataCode": "KSR",
+    "icaoCode": "WAWH",
+    "name": "Selayar Islands H. Aroeppala",
+    "alpha2countryCode": "ID",
+    "latitude": -6.1756,
+    "longitude": 120.436
+  },
+  {
+    "iataCode": "LAH",
+    "icaoCode": "WAEL",
+    "name": "Labuha Oesman Sadik",
+    "alpha2countryCode": "ID",
+    "latitude": -0.6347,
+    "longitude": 127.504
+  },
+  {
+    "iataCode": "LII",
+    "icaoCode": "WAVA",
+    "name": "Mulia",
+    "alpha2countryCode": "ID",
+    "latitude": -3.1667,
+    "longitude": 136.167
+  },
+  {
+    "iataCode": "LKA",
+    "icaoCode": "WATL",
+    "name": "Larantuka Gewayantana",
+    "alpha2countryCode": "ID",
+    "latitude": -8.2742,
+    "longitude": 123.001
+  },
+  {
+    "iataCode": "LLO",
+    "icaoCode": null,
+    "name": "Palopo Lagaligo",
+    "alpha2countryCode": "ID",
+    "latitude": -3.0825,
+    "longitude": 120.245
+  },
+  {
+    "iataCode": "LUV",
+    "icaoCode": "WAPL",
+    "name": "Langgur Dumatubun",
+    "alpha2countryCode": "ID",
+    "latitude": -5.6617,
+    "longitude": 132.731
+  },
+  {
+    "iataCode": "LUW",
+    "icaoCode": "WAFW",
+    "name": "Luwuk S.Aminuddin Amir",
+    "alpha2countryCode": "ID",
+    "latitude": -1.0381,
+    "longitude": 122.773
+  },
+  {
+    "iataCode": "LWE",
+    "icaoCode": "WATW",
+    "name": "Lewoleba Wunopito",
+    "alpha2countryCode": "ID",
+    "latitude": -8.3619,
+    "longitude": 123.439
+  },
+  {
+    "iataCode": "MAL",
+    "icaoCode": "WAEO",
+    "name": "Mangole Falabisahaya",
+    "alpha2countryCode": "ID",
+    "latitude": -1.8833,
+    "longitude": 125.833
+  },
+  {
+    "iataCode": "MDC",
+    "icaoCode": "WAMM",
+    "name": "Manado",
+    "alpha2countryCode": "ID",
+    "latitude": 1.5492,
+    "longitude": 124.926
+  },
+  {
+    "iataCode": "MKW",
+    "icaoCode": "WAUU",
+    "name": "Manokwari Rendani",
+    "alpha2countryCode": "ID",
+    "latitude": -0.8919,
+    "longitude": 134.049
+  },
+  {
+    "iataCode": "MNA",
+    "icaoCode": "WAMN",
+    "name": "Melangguane",
+    "alpha2countryCode": "ID",
+    "latitude": 4.0067,
+    "longitude": 126.674
+  },
+  {
+    "iataCode": "MOF",
+    "icaoCode": "WATC",
+    "name": "Maumere Fransiskus X.Seda",
+    "alpha2countryCode": "ID",
+    "latitude": -8.6406,
+    "longitude": 122.237
+  },
+  {
+    "iataCode": "MOH",
+    "icaoCode": "WAFO",
+    "name": "Morowali",
+    "alpha2countryCode": "ID",
+    "latitude": -2.2028,
+    "longitude": 121.661
+  },
+  {
+    "iataCode": "MXB",
+    "icaoCode": "WAFM",
+    "name": "Masamba Andi Jemma",
+    "alpha2countryCode": "ID",
+    "latitude": -2.5333,
+    "longitude": 120.333
+  },
+  {
+    "iataCode": "NAH",
+    "icaoCode": "WAMH",
+    "name": "Tahuna Naha",
+    "alpha2countryCode": "ID",
+    "latitude": 3.6833,
+    "longitude": 125.528
+  },
+  {
+    "iataCode": "NAM",
+    "icaoCode": "WAPR",
+    "name": "Namlea",
+    "alpha2countryCode": "ID",
+    "latitude": -3.2372,
+    "longitude": 127.1
+  },
+  {
+    "iataCode": "NBX",
+    "icaoCode": "WABI",
+    "name": "Nabire",
+    "alpha2countryCode": "ID",
+    "latitude": -3.3681,
+    "longitude": 135.497
+  },
+  {
+    "iataCode": "NDA",
+    "icaoCode": "WAPC",
+    "name": "Banda Island Bandaneira",
+    "alpha2countryCode": "ID",
+    "latitude": -4.5333,
+    "longitude": 129.9
+  },
+  {
+    "iataCode": "NRE",
+    "icaoCode": "WAPG",
+    "name": "Namrole",
+    "alpha2countryCode": "ID",
+    "latitude": -3.855,
+    "longitude": 126.702
+  },
+  {
+    "iataCode": "NTI",
+    "icaoCode": "WASB",
+    "name": "Bintuni Stenkol",
+    "alpha2countryCode": "ID",
+    "latitude": -2.1,
+    "longitude": 133.517
+  },
+  {
+    "iataCode": "OBD",
+    "icaoCode": "WAYO",
+    "name": "Obano",
+    "alpha2countryCode": "ID",
+    "latitude": -3.9,
+    "longitude": 136.2
+  },
+  {
+    "iataCode": "OJU",
+    "icaoCode": null,
+    "name": "Tojo Una Una Tanjung Api",
+    "alpha2countryCode": "ID",
+    "latitude": -0.8642,
+    "longitude": 121.627
+  },
+  {
+    "iataCode": "ONI",
+    "icaoCode": "WABD",
+    "name": "Moanamani",
+    "alpha2countryCode": "ID",
+    "latitude": -3.9833,
+    "longitude": 136.083
+  },
+  {
+    "iataCode": "OTI",
+    "icaoCode": "WAEW",
+    "name": "Morotai Island Pitu",
+    "alpha2countryCode": "ID",
+    "latitude": 2.05,
+    "longitude": 128.317
+  },
+  {
+    "iataCode": "PGQ",
+    "icaoCode": "WAEM",
+    "name": "Pekaulang Buli",
+    "alpha2countryCode": "ID",
+    "latitude": 0.9178,
+    "longitude": 128.383
+  },
+  {
+    "iataCode": "PLW",
+    "icaoCode": "WAFF",
+    "name": "Palu Mutiara",
+    "alpha2countryCode": "ID",
+    "latitude": -0.9186,
+    "longitude": 119.91
+  },
+  {
+    "iataCode": "PSJ",
+    "icaoCode": "WAFP",
+    "name": "Poso Kasinguncu",
+    "alpha2countryCode": "ID",
+    "latitude": -1.4183,
+    "longitude": 120.657
+  },
+  {
+    "iataCode": "PUM",
+    "icaoCode": "WAWP",
+    "name": "Kolaka Pomala",
+    "alpha2countryCode": "ID",
+    "latitude": -4.1811,
+    "longitude": 121.615
+  },
+  {
+    "iataCode": "RAQ",
+    "icaoCode": "WAWR",
+    "name": "Muna Sugimanuru",
+    "alpha2countryCode": "ID",
+    "latitude": -4.85,
+    "longitude": 122.717
+  },
+  {
+    "iataCode": "RDE",
+    "icaoCode": "WAUM",
+    "name": "Merdey Jahabra",
+    "alpha2countryCode": "ID",
+    "latitude": -1.5833,
+    "longitude": 133.333
+  },
+  {
+    "iataCode": "ABU",
+    "icaoCode": "WATA",
+    "name": "Atambua Haliwen",
+    "alpha2countryCode": "ID",
+    "latitude": -9.075,
+    "longitude": 124.904
+  },
+  {
+    "iataCode": "AGD",
+    "icaoCode": "WAUA",
+    "name": "Anggi",
+    "alpha2countryCode": "ID",
+    "latitude": -1.3833,
+    "longitude": 133.867
+  },
+  {
+    "iataCode": "AHI",
+    "icaoCode": "WAPA",
+    "name": "Amahai",
+    "alpha2countryCode": "ID",
+    "latitude": -3.3333,
+    "longitude": 128.917
+  },
+  {
+    "iataCode": "RJM",
+    "icaoCode": "WASN",
+    "name": "Waisai Marinda",
+    "alpha2countryCode": "ID",
+    "latitude": -0.26,
+    "longitude": 130.642
+  },
+  {
+    "iataCode": "AMQ",
+    "icaoCode": "WAPP",
+    "name": "Ambon Pattimura",
+    "alpha2countryCode": "ID",
+    "latitude": -3.7103,
+    "longitude": 128.089
+  },
+  {
+    "iataCode": "RSK",
+    "icaoCode": "WAUR",
+    "name": "Ransiki Abresso",
+    "alpha2countryCode": "ID",
+    "latitude": -1.5,
+    "longitude": 134.25
+  },
+  {
+    "iataCode": "ARD",
+    "icaoCode": "WATM",
+    "name": "Alor Mali",
+    "alpha2countryCode": "ID",
+    "latitude": -8.1331,
+    "longitude": 124.597
+  },
+  {
+    "iataCode": "RTI",
+    "icaoCode": "WATR",
+    "name": "Roti David C. Saudale",
+    "alpha2countryCode": "ID",
+    "latitude": -10.7669,
+    "longitude": 123.075
+  },
+  {
+    "iataCode": "AYW",
+    "icaoCode": "WASA",
+    "name": "Ayawasi",
+    "alpha2countryCode": "ID",
+    "latitude": -1.2,
+    "longitude": 132.5
+  },
+  {
+    "iataCode": "SEQ",
+    "icaoCode": "WIBS",
+    "name": "Bengkalis Sei Pakning",
+    "alpha2countryCode": "ID",
+    "latitude": 1.3667,
+    "longitude": 102.133
+  },
+  {
+    "iataCode": "BDJ",
+    "icaoCode": "WAOO",
+    "name": "Banjarmasin Syamsudin Noor",
+    "alpha2countryCode": "ID",
+    "latitude": -3.4422,
+    "longitude": 114.762
+  },
+  {
+    "iataCode": "BDO",
+    "icaoCode": "WICC",
+    "name": "Bandung",
+    "alpha2countryCode": "ID",
+    "latitude": -6.9006,
+    "longitude": 107.576
+  },
+  {
+    "iataCode": "SIQ",
+    "icaoCode": "WIDS",
+    "name": "Singkep Dabo",
+    "alpha2countryCode": "ID",
+    "latitude": -0.4833,
+    "longitude": 104.583
+  },
+  {
+    "iataCode": "BKS",
+    "icaoCode": "WIGG",
+    "name": "Bengkulu Fatmawati Soekarno",
+    "alpha2countryCode": "ID",
+    "latitude": -3.8636,
+    "longitude": 102.339
+  },
+  {
+    "iataCode": "SMQ",
+    "icaoCode": "WAGS",
+    "name": "Sampit H.Asan",
+    "alpha2countryCode": "ID",
+    "latitude": -2.4992,
+    "longitude": 112.975
+  },
+  {
+    "iataCode": "SOC",
+    "icaoCode": "WAHQ",
+    "name": "Solo City",
+    "alpha2countryCode": "ID",
+    "latitude": -7.5161,
+    "longitude": 110.757
+  },
+  {
+    "iataCode": "SQG",
+    "icaoCode": "WIOS",
+    "name": "Sintang",
+    "alpha2countryCode": "ID",
+    "latitude": 0.0636,
+    "longitude": 111.473
+  },
+  {
+    "iataCode": "SRG",
+    "icaoCode": "WAHS",
+    "name": "Semarang Ahmad Yanii",
+    "alpha2countryCode": "ID",
+    "latitude": -6.9714,
+    "longitude": 110.374
+  },
+  {
+    "iataCode": "SUB",
+    "icaoCode": "WARR",
+    "name": "Bandar Udara Internasional Juanda",
+    "alpha2countryCode": "ID",
+    "latitude": -7.3797,
+    "longitude": 112.787
+  },
+  {
+    "iataCode": "SUP",
+    "icaoCode": "WART",
+    "name": "Sumenep Trunojoyo",
+    "alpha2countryCode": "ID",
+    "latitude": -7.0231,
+    "longitude": 113.889
+  },
+  {
+    "iataCode": "BTH",
+    "icaoCode": "WIDD",
+    "name": "Batam Hang Nadim",
+    "alpha2countryCode": "ID",
+    "latitude": 1.1211,
+    "longitude": 104.119
+  },
+  {
+    "iataCode": "BUU",
+    "icaoCode": "WIJB",
+    "name": "Muara Bungo",
+    "alpha2countryCode": "ID",
+    "latitude": -1.5417,
+    "longitude": 102.182
+  },
+  {
+    "iataCode": "BXW",
+    "icaoCode": "WARW",
+    "name": "Bawean",
+    "alpha2countryCode": "ID",
+    "latitude": -5.7239,
+    "longitude": 112.679
+  },
+  {
+    "iataCode": "TBM",
+    "icaoCode": "WAGT",
+    "name": "Tumbang Samba",
+    "alpha2countryCode": "ID",
+    "latitude": -3.25,
+    "longitude": 112.583
+  },
+  {
+    "iataCode": "CBN",
+    "icaoCode": "WICD",
+    "name": "Cirebon Cakrabhuwana",
+    "alpha2countryCode": "ID",
+    "latitude": -6.75,
+    "longitude": 108.533
+  },
+  {
+    "iataCode": "TFY",
+    "icaoCode": "WILP",
+    "name": "Krui Muhammad Taufiq Keimas Pt.",
+    "alpha2countryCode": "ID",
+    "latitude": -5.2111,
+    "longitude": 103.936
+  },
+  {
+    "iataCode": "CGK",
+    "icaoCode": "WIII",
+    "name": "Jakarta Soekarno-Hatta",
+    "alpha2countryCode": "ID",
+    "latitude": -6.1256,
+    "longitude": 106.656
+  },
+  {
+    "iataCode": "TJB",
+    "icaoCode": "WIDT",
+    "name": "Tanjung Balai Sei Bati",
+    "alpha2countryCode": "ID",
+    "latitude": 2.9667,
+    "longitude": 99.8
+  },
+  {
+    "iataCode": "TJG",
+    "icaoCode": "WAON",
+    "name": "Tanjung Warukin",
+    "alpha2countryCode": "ID",
+    "latitude": -2.2167,
+    "longitude": 115.436
+  },
+  {
+    "iataCode": "TJQ",
+    "icaoCode": "WIKT",
+    "name": "Tanjung Pandan H.A.S. Hanandjoeddin",
+    "alpha2countryCode": "ID",
+    "latitude": -2.7458,
+    "longitude": 107.755
+  },
+  {
+    "iataCode": "TKG",
+    "icaoCode": "WILL",
+    "name": "Bandar Lampung Radin Inten Ii",
+    "alpha2countryCode": "ID",
+    "latitude": -5.2422,
+    "longitude": 105.179
+  },
+  {
+    "iataCode": "CJN",
+    "icaoCode": "WICN",
+    "name": "Cijulang Nusawiru",
+    "alpha2countryCode": "ID",
+    "latitude": -7.7206,
+    "longitude": 108.49
+  },
+  {
+    "iataCode": "TNJ",
+    "icaoCode": "WIDN",
+    "name": "Tanjung Pinang Raja Haji Fisabilillah",
+    "alpha2countryCode": "ID",
+    "latitude": 0.9239,
+    "longitude": 104.533
+  },
+  {
+    "iataCode": "CPF",
+    "icaoCode": null,
+    "name": "Cepu Nglonram",
+    "alpha2countryCode": "ID",
+    "latitude": -7.1833,
+    "longitude": 111.533
+  },
+  {
+    "iataCode": "TSY",
+    "icaoCode": "WICM",
+    "name": "Tasikmalaya Wiriadinata",
+    "alpha2countryCode": "ID",
+    "latitude": -7.3472,
+    "longitude": 108.246
+  },
+  {
+    "iataCode": "CXP",
+    "icaoCode": "WAHL",
+    "name": "Cilacap Tunggul Wulung",
+    "alpha2countryCode": "ID",
+    "latitude": -7.7333,
+    "longitude": 109
+  },
+  {
+    "iataCode": "DJB",
+    "icaoCode": "WIJJ",
+    "name": "Jambi Sultan Thaha",
+    "alpha2countryCode": "ID",
+    "latitude": -1.6381,
+    "longitude": 103.644
+  },
+  {
+    "iataCode": "DTB",
+    "icaoCode": "WIMN",
+    "name": "Siborong-Borong Silangit",
+    "alpha2countryCode": "ID",
+    "latitude": 2.2597,
+    "longitude": 98.9875
+  },
+  {
+    "iataCode": "DTD",
+    "icaoCode": "WALJ",
+    "name": "Datadawai",
+    "alpha2countryCode": "ID",
+    "latitude": 0.8108,
+    "longitude": 114.531
+  },
+  {
+    "iataCode": "DUM",
+    "icaoCode": "WIBD",
+    "name": "Dumai Pinang Kampai",
+    "alpha2countryCode": "ID",
+    "latitude": 1.6833,
+    "longitude": 101.45
+  },
+  {
+    "iataCode": "FLZ",
+    "icaoCode": "WIMS",
+    "name": "Sibolga Ferdinand",
+    "alpha2countryCode": "ID",
+    "latitude": 1.5558,
+    "longitude": 98.8889
+  },
+  {
+    "iataCode": "GHS",
+    "icaoCode": "WALE",
+    "name": "West Kutai Melalan",
+    "alpha2countryCode": "ID",
+    "latitude": -0.2039,
+    "longitude": 115.76
+  },
+  {
+    "iataCode": "GXA",
+    "icaoCode": "WAGK",
+    "name": "Muara Teweh Beringin",
+    "alpha2countryCode": "ID",
+    "latitude": -0.9428,
+    "longitude": 114.894
+  },
+  {
+    "iataCode": "YIA",
+    "icaoCode": "WAHI",
+    "name": "New Yogyakarta Intl",
+    "alpha2countryCode": "ID",
+    "latitude": -7.91,
+    "longitude": 110.07
+  },
+  {
+    "iataCode": "HLP",
+    "icaoCode": "WIHH",
+    "name": "Jakarta Halim Perdanakusuma Apt",
+    "alpha2countryCode": "ID",
+    "latitude": -6.2667,
+    "longitude": 106.891
+  },
+  {
+    "iataCode": "JOG",
+    "icaoCode": "WAHH",
+    "name": "Yogyakarta Adisutjipto",
+    "alpha2countryCode": "ID",
+    "latitude": -7.7881,
+    "longitude": 110.432
+  },
+  {
+    "iataCode": "KJT",
+    "icaoCode": "WICA",
+    "name": "Majalengka Kertajati International",
+    "alpha2countryCode": "ID",
+    "latitude": -6.6514,
+    "longitude": 108.169
+  },
+  {
+    "iataCode": "KLP",
+    "icaoCode": "WAGF",
+    "name": "Seruyan Kuala Pembuang",
+    "alpha2countryCode": "ID",
+    "latitude": -3.3758,
+    "longitude": 112.536
+  },
+  {
+    "iataCode": "KLQ",
+    "icaoCode": null,
+    "name": "Keluang",
+    "alpha2countryCode": "ID",
+    "latitude": -2.6,
+    "longitude": 103.95
+  },
+  {
+    "iataCode": "KRC",
+    "icaoCode": "WIJI",
+    "name": "Kerinci Depati Parbo",
+    "alpha2countryCode": "ID",
+    "latitude": -2.0933,
+    "longitude": 101.469
+  },
+  {
+    "iataCode": "KTG",
+    "icaoCode": "WIOK",
+    "name": "Ketapang Rahadi Osman",
+    "alpha2countryCode": "ID",
+    "latitude": -1.8167,
+    "longitude": 109.964
+  },
+  {
+    "iataCode": "KWB",
+    "icaoCode": "WAHU",
+    "name": "Karimunjawa",
+    "alpha2countryCode": "ID",
+    "latitude": -5.85,
+    "longitude": 110.467
+  },
+  {
+    "iataCode": "LLJ",
+    "icaoCode": "WIPB",
+    "name": "Lubuk Linggau Silampari",
+    "alpha2countryCode": "ID",
+    "latitude": -3.2856,
+    "longitude": 102.916
+  },
+  {
+    "iataCode": "LMU",
+    "icaoCode": "WIDL",
+    "name": "Jemaja Island Letung",
+    "alpha2countryCode": "ID",
+    "latitude": 2.9647,
+    "longitude": 105.756
+  },
+  {
+    "iataCode": "LPU",
+    "icaoCode": "WALP",
+    "name": "Long Apung",
+    "alpha2countryCode": "ID",
+    "latitude": 1.705,
+    "longitude": 114.97
+  },
+  {
+    "iataCode": "MJY",
+    "icaoCode": null,
+    "name": "Mangunjaya",
+    "alpha2countryCode": "ID",
+    "latitude": -2.7333,
+    "longitude": 103.567
+  },
+  {
+    "iataCode": "MLG",
+    "icaoCode": "WARA",
+    "name": "Malang Abdul Rachman Saleh",
+    "alpha2countryCode": "ID",
+    "latitude": -7.9267,
+    "longitude": 112.714
+  },
+  {
+    "iataCode": "MPC",
+    "icaoCode": "WIGM",
+    "name": "Muko-Muko",
+    "alpha2countryCode": "ID",
+    "latitude": -2.55,
+    "longitude": 101.1
+  },
+  {
+    "iataCode": "MSI",
+    "icaoCode": null,
+    "name": "Masalembo",
+    "alpha2countryCode": "ID",
+    "latitude": -5.5667,
+    "longitude": 114.433
+  },
+  {
+    "iataCode": "MWK",
+    "icaoCode": "WIOM",
+    "name": "Matak Tarempa",
+    "alpha2countryCode": "ID",
+    "latitude": 3.3,
+    "longitude": 106.266
+  },
+  {
+    "iataCode": "NPO",
+    "icaoCode": "WIOG",
+    "name": "Nangapinoh",
+    "alpha2countryCode": "ID",
+    "latitude": -0.3667,
+    "longitude": 111.75
+  },
+  {
+    "iataCode": "NTX",
+    "icaoCode": "WIDO",
+    "name": "Natuna Ranai",
+    "alpha2countryCode": "ID",
+    "latitude": 3.9061,
+    "longitude": 108.388
+  },
+  {
+    "iataCode": "PCB",
+    "icaoCode": "WIHP",
+    "name": "Pondok Cabe",
+    "alpha2countryCode": "ID",
+    "latitude": -6.35,
+    "longitude": 106.767
+  },
+  {
+    "iataCode": "PDG",
+    "icaoCode": "WIEE",
+    "name": "Padang Minangkabau",
+    "alpha2countryCode": "ID",
+    "latitude": -0.875,
+    "longitude": 100.352
+  },
+  {
+    "iataCode": "PDO",
+    "icaoCode": null,
+    "name": "Pendopo",
+    "alpha2countryCode": "ID",
+    "latitude": -3.2833,
+    "longitude": 103.833
+  },
+  {
+    "iataCode": "PGK",
+    "icaoCode": "WIKK",
+    "name": "Pangkalpinang Depati Amir",
+    "alpha2countryCode": "ID",
+    "latitude": -2.1636,
+    "longitude": 106.139
+  },
+  {
+    "iataCode": "PKN",
+    "icaoCode": "WAGI",
+    "name": "Pangkalanbun Iskandar",
+    "alpha2countryCode": "ID",
+    "latitude": -2.7053,
+    "longitude": 111.673
+  },
+  {
+    "iataCode": "PKU",
+    "icaoCode": "WIBB",
+    "name": "Pekanbaru",
+    "alpha2countryCode": "ID",
+    "latitude": 0.4608,
+    "longitude": 101.444
+  },
+  {
+    "iataCode": "PKY",
+    "icaoCode": "WAGG",
+    "name": "Palangkaraya Tjilik Riwut",
+    "alpha2countryCode": "ID",
+    "latitude": -2.225,
+    "longitude": 113.943
+  },
+  {
+    "iataCode": "PLM",
+    "icaoCode": "WIPP",
+    "name": "Palembang S M Badaruddin Ii",
+    "alpha2countryCode": "ID",
+    "latitude": -2.8983,
+    "longitude": 104.7
+  },
+  {
+    "iataCode": "PNK",
+    "icaoCode": "WIOO",
+    "name": "Pontianak Supadio",
+    "alpha2countryCode": "ID",
+    "latitude": -0.1508,
+    "longitude": 109.404
+  },
+  {
+    "iataCode": "PPJ",
+    "icaoCode": "WIHG",
+    "name": "Panjang Island",
+    "alpha2countryCode": "ID",
+    "latitude": -6.35,
+    "longitude": 106.567
+  },
+  {
+    "iataCode": "PPR",
+    "icaoCode": "WIBG",
+    "name": "Pasir Pangarayan",
+    "alpha2countryCode": "ID",
+    "latitude": 0.8333,
+    "longitude": 100.367
+  },
+  {
+    "iataCode": "PSU",
+    "icaoCode": "WIOP",
+    "name": "Putussibau",
+    "alpha2countryCode": "ID",
+    "latitude": 0.8356,
+    "longitude": 112.937
+  },
+  {
+    "iataCode": "PWL",
+    "icaoCode": "WAHP",
+    "name": "Purwokerto Wirasaba",
+    "alpha2countryCode": "ID",
+    "latitude": -7.45,
+    "longitude": 109.417
+  },
+  {
+    "iataCode": "PXA",
+    "icaoCode": "WIPJ",
+    "name": "Lahat Pagar Alam",
+    "alpha2countryCode": "ID",
+    "latitude": -4.0331,
+    "longitude": 103.239
+  },
+  {
+    "iataCode": "AEG",
+    "icaoCode": "WIME",
+    "name": "Aek Godang",
+    "alpha2countryCode": "ID",
+    "latitude": 1.4,
+    "longitude": 99.43
+  },
+  {
+    "iataCode": "RGT",
+    "icaoCode": "WIBJ",
+    "name": "Rengat Japura",
+    "alpha2countryCode": "ID",
+    "latitude": -0.3528,
+    "longitude": 102.335
+  },
+  {
+    "iataCode": "RKI",
+    "icaoCode": "WIEB",
+    "name": "Rokot Sipora",
+    "alpha2countryCode": "ID",
+    "latitude": -0.95,
+    "longitude": 100.75
+  },
+  {
+    "iataCode": "RKO",
+    "icaoCode": null,
+    "name": "Sipora",
+    "alpha2countryCode": "ID",
+    "latitude": -2.0833,
+    "longitude": 99.6833
+  },
+  {
+    "iataCode": "AKQ",
+    "icaoCode": "WILM",
+    "name": "Menggala Astra Kksetra",
+    "alpha2countryCode": "ID",
+    "latitude": -4.6167,
+    "longitude": 105.233
+  }
+]
