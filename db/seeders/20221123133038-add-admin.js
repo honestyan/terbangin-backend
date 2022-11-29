@@ -14,14 +14,13 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "Admin",
+      "Admins",
       [
         {
           id: "1",
           email: "admin@gmail.com",
           password: await bcrypt.hash("admin123", 10),
           username: "admin",
-          name: "Admin Terbangin",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
