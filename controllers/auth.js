@@ -1,5 +1,5 @@
 const { JWT_SIGNATURE_KEY, BASE_URL } = process.env;
-const { User, Admin } = require("../models");
+const { User, Admin, Airport } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const googleOauth2 = require("../utils/google");
