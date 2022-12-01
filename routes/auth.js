@@ -10,5 +10,7 @@ router.get("/google", controller.auth.google);
 router.post("/changepassword", mid.mustLogin, controller.auth.changePassword);
 router.post("/forgotpassword", controller.auth.forgotPasswordBE);
 router.post("/reset-password", controller.auth.resetPassword);
+router.post("/readprofile", mid.mustLogin, controller.auth.readProfile);
+router.put("/updateprofile", mid.mustLogin, controller.auth.updateProfile);
 
 module.exports = router;

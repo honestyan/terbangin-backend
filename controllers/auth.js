@@ -342,4 +342,54 @@ module.exports = {
       next(err);
     }
   },
+
+  readProfile: async (req, res, next) => {
+    try {
+      const existUser = await User.findOne({ where: { id: req.user.id } });
+
+      if (!existUser){
+        return res.status(404).json({
+          success: false, message: "User not found!" 
+        }); 
+      }
+            
+      return res.status(200).json({
+        status: true,
+        message: "read profile information success",
+        data: existUser,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  updateProfile: async (req, res, next) => {
+    try {
+      const { newName, newPhone, newUserType } = req.body;
+      const existUser = await User.findOne({ where: { id: req.user.id } });
+
+      if (!existUser){
+        return res.status(404).json({
+          success: false, message: "User not found!" 
+        }); 
+      }
+      
+      const updatedUser = await User.update(
+        { 
+          name:newName,
+          phone: newPhone,
+          userType:newUserType
+        },
+        { where: { id: existUser.id } }
+      );
+
+      return res.status(200).json({
+        status: true,
+        message: "update profile information success",
+        data: updatedUser,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
 };
