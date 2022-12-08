@@ -1,7 +1,7 @@
 const { Airport } = require("../models");
 
 module.exports = {
-  airport: async (req, res, next) => {
+  getAll: async (req, res, next) => {
     try {
       const airports = await Airport.findAll();
       return res.status(200).json({
@@ -10,6 +10,27 @@ module.exports = {
         data: airports,
       });
     } catch (error) {
+      next(err);
+    }
+  },
+  getOne: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const airport = await Airport.findOne({
+        where: { id },
+      });
+      if (!airport) {
+        return res.status(401).json({
+          status: false,
+          message: "Airport not found",
+        });
+      }
+      return res.status(200).json({
+        status: true,
+        message: "Airport found",
+        data: airport,
+      });
+    } catch (err) {
       next(err);
     }
   },
