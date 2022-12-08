@@ -7,9 +7,17 @@ const mid = require("../helpers/middleware");
 router.post("/login", controller.admin.login);
 
 //airport
-router.get("/airport/", mid.mustAdmin, controller.airport.airport);
-router.post("/airport/create", mid.mustAdmin, controller.airport.create);
+router.get("/airport/", mid.mustAdmin, controller.airport.getAll);
+router.get("/airport/:id", mid.mustAdmin, controller.airport.getOne);
+router.post("/airport/", mid.mustAdmin, controller.airport.create);
 router.put("/airport/:id", mid.mustAdmin, controller.airport.update);
 router.delete("/airport/:id", mid.mustAdmin, controller.airport.delete);
+
+//product
+router.get("/product/", mid.mustAdmin, controller.product.getAll);
+router.get("/product/:id", mid.mustAdmin, controller.product.getOne);
+router.post("/product/", mid.mustAdmin, controller.product.create);
+router.put("/product/:id", mid.mustAdmin, controller.product.update);
+router.delete("/product/:id", mid.mustAdmin, controller.product.delete);
 
 module.exports = router;
