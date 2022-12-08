@@ -18,6 +18,9 @@ module.exports = {
       payment_id: {
         type: Sequelize.STRING,
       },
+      total: {
+        type: Sequelize.INTEGER,
+      },
       status: {
         type: Sequelize.INTEGER,
       },

@@ -259,32 +259,6 @@ module.exports = {
       next(err);
     }
   },
-  // forgotPassword: async(req,res, next)=>{
-  //   try{
-  //     const {email} = req.body;
-
-  //     const user = await User.findOne({where : {email}})
-  //     if (user) {
-  //       const payload = { user_id: user.id };
-  //       const token = jwt.sign(payload, JWT_SIGNATURE_KEY);
-  //       const link = `http://localhost:3000/auth/reset-password?token=${token}`;
-  //       htmlEmail = await utilEmail.getHtml('reset-password.ejs', { name: user.name, link: link });
-  //       await utilEmail.sendEmail(user.email, 'Reset your password', htmlEmail);
-  //     }
-  //     return res.status(200).json({
-  //       status: true,
-  //       message: 'success',
-  //       data: {
-  //         id:user.id,
-  //         email:user.email
-  //       }
-  //     });
-  //   }catch(err){
-  //     next(err);
-  //   }
-  // },
-  //selain email, link tampilan reset password juga dikirim
-  //di form reset, token dikirm lewat que
   forgotPasswordBE: async (req, res, next) => {
     try {
       const { email, linkreset } = req.body;
