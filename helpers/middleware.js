@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
-const { Admin } = require("../models");
+const { Admin, User } = require("../models");
 
 const { JWT_SIGNATURE_KEY } = process.env;
 
 module.exports = {
-  mustLogin: (req, res, next) => {
+  mustLogin: async (req, res, next) => {
     try {
       const token = req.headers["authorization"];
       if (!token) {
@@ -16,8 +16,16 @@ module.exports = {
       }
 
       const decoded = jwt.verify(token, JWT_SIGNATURE_KEY);
-      req.user = decoded;
+      const existUser = await User.findOne({ where: { email: decoded.email } });
 
+      if (!existUser) {
+        return res.status(403).json({
+          status: false,
+          message: "you're not user !",
+        });
+      }
+
+      req.user = decoded;
       next();
     } catch (err) {
       if (err.message == "jwt malformed") {
@@ -31,7 +39,7 @@ module.exports = {
       next(err);
     }
   },
-  mustAdmin: (req, res, next) => {
+  mustAdmin: async (req, res, next) => {
     try {
       const token = req.headers["authorization"];
       if (!token) {
@@ -43,8 +51,9 @@ module.exports = {
       }
 
       const decoded = jwt.verify(token, JWT_SIGNATURE_KEY);
-      req.admin = decoded;
-      const existadmin = Admin.findOne({ where: { email: decoded.email } });
+      const existadmin = await Admin.findOne({
+        where: { email: decoded.email },
+      });
 
       if (!existadmin) {
         return res.status(403).json({
@@ -53,6 +62,7 @@ module.exports = {
         });
       }
 
+      req.admin = decoded;
       next();
     } catch (err) {
       if (err.message == "jwt malformed") {
