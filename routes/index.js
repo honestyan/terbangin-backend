@@ -4,17 +4,19 @@ const auth = require("./auth");
 const airport = require("./airport");
 const admin = require("./admin");
 const product = require("./product");
+const transaction = require("./transaction");
 
 router.get("/", (req, res) => {
-  return res.status(200).json({
-    status: true,
-    message: "Welcome to Terbangin API",
-  });
+    return res.status(200).json({
+        status: true,
+        message: "Welcome to Terbangin API",
+    });
 });
 
 router.use("/admin", admin);
 router.use("/auth", auth);
 router.use("/airport", airport);
 router.use("/product", product);
+router.use("/transaction", transaction);
 
 module.exports = router;
