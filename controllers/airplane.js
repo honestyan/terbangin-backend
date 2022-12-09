@@ -36,19 +36,23 @@ module.exports = {
   },
   create: async (req, res, next) => {
     try {
-      const { name, capacity, airline_id, total_seat_row, total_seat_colum  } = req.body;
-      if (!name ||  !capacity || !airline_id || !total_seat_row || !total_seat_colum ) {
+      const { name, capacity, airline_id } = req.body;
+      if (!name || !capacity || !airline_id) {
         return res.status(400).json({
           status: false,
           message: "Please fill all the fields",
         });
       }
+
+      let total_seat_colum = capacity / 6;
+      let total_seat_row = capacity / total_seat_colum;
+
       const airplane = await Airplane.create({
-        name, 
-        capacity, 
-        airline_id, 
-        total_seat_row, 
-        total_seat_colum 
+        name,
+        capacity,
+        airline_id,
+        total_seat_row,
+        total_seat_colum,
       });
       return res.status(200).json({
         status: true,
@@ -62,13 +66,17 @@ module.exports = {
   update: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const {name, capacity, airline_id, total_seat_row, total_seat_colum } = req.body;
-      if (!name ||  !capacity || !airline_id || !total_seat_row || !total_seat_colum) {
+      const { name, capacity, airline_id } = req.body;
+      if (!name || !capacity || !airline_id) {
         return res.status(400).json({
           status: false,
           message: "Please fill all the fields",
         });
       }
+
+      let total_seat_colum = capacity / 6;
+      let total_seat_row = capacity / total_seat_colum;
+
       const airplane = await Airplane.findByPk(id);
       if (!airplane) {
         return res.status(404).json({
@@ -77,11 +85,11 @@ module.exports = {
         });
       }
       await airplane.update({
-        name, 
-        capacity, 
-        airline_id, 
-        total_seat_row, 
-        total_seat_colum 
+        name,
+        capacity,
+        airline_id,
+        total_seat_row,
+        total_seat_colum,
       });
       return res.status(200).json({
         status: true,

@@ -20,4 +20,18 @@ router.post("/product/", mid.mustAdmin, controller.product.create);
 router.put("/product/:id", mid.mustAdmin, controller.product.update);
 router.delete("/product/:id", mid.mustAdmin, controller.product.delete);
 
+//airplane
+router.get("/airplane/", mid.mustAdmin, controller.airplane.getAll);
+router.get("/airplane/:id", mid.mustAdmin, controller.airplane.getOne);
+router.post("/airplane", mid.mustAdmin, controller.airplane.create);
+router.put("/airplane/:id", mid.mustAdmin, controller.airplane.update);
+router.delete("/airplane/:id", mid.mustAdmin, controller.airplane.delete);
+
+//airline
+router.get("/airline/", mid.mustAdmin, controller.airline.getAll);
+router.get("/airline/:id", mid.mustAdmin, controller.airline.getOne);
+router.post("/airline/", mid.mustAdmin, controller.airline.create);
+router.put("/airline/:id", mid.mustAdmin, controller.airline.update);
+router.delete("/airline/:id", mid.mustAdmin, controller.airline.delete);
+
 module.exports = router;

@@ -1,4 +1,5 @@
 const { Product, Airport } = require("../models");
+const airline = require("./airline");
 
 module.exports = {
   create: async (req, res, next) => {
@@ -12,8 +13,6 @@ module.exports = {
         price,
         gate,
         airplane_id,
-        airline_id,
-        stock,
       } = req.body;
 
       if (
@@ -24,9 +23,7 @@ module.exports = {
         !est_time ||
         !price ||
         !gate ||
-        !airplane_id ||
-        !airline_id ||
-        !stock
+        !airplane_id
       ) {
         return res.status(401).json({
           status: false,
@@ -48,17 +45,43 @@ module.exports = {
         });
       }
 
+      const airplane = await Airplane.findOne({
+        where: { id: airplane_id },
+      });
+
+      const airline = await Airline.findOne({
+        where: { id: airplane.airline_id },
+      });
+
+      if (!airplane || !airline) {
+        return res.status(401).json({
+          status: false,
+          message: "Airplane or airline not found",
+        });
+      }
+
+      console.log(
+        airportFrom.name,
+        airportTo.name,
+        airplane.name,
+        airline.name,
+        airplane.capacity
+      );
+
       const product = await Product.create({
         iata_from,
         iata_to,
+        airport_from: airportFrom.name,
+        airport_to: airportTo.name,
         date_departure,
         date_arrival,
         est_time,
         price,
         gate,
         airplane_id,
-        airline_id,
-        stock,
+        airplane_name: airplane.name,
+        airline_name: airline.name,
+        stock: airplane.capacity,
       });
 
       return res.status(200).json({
@@ -81,8 +104,6 @@ module.exports = {
         price,
         gate,
         airplane_id,
-        airline_id,
-        stock,
       } = req.body;
 
       if (
@@ -93,9 +114,7 @@ module.exports = {
         !est_time ||
         !price ||
         !gate ||
-        !airplane_id ||
-        !airline_id ||
-        !stock
+        !airplane_id
       ) {
         return res.status(401).json({
           status: false,
@@ -117,17 +136,35 @@ module.exports = {
         });
       }
 
+      const airplane = await Airplane.findOne({
+        where: { id: airplane_id },
+      });
+
+      const airline = await Airline.findOne({
+        where: { id: airplane.airline_id },
+      });
+
+      if (!airplane || !airline) {
+        return res.status(401).json({
+          status: false,
+          message: "Airplane or airline not found",
+        });
+      }
+
       const product = await Product.update({
         iata_from,
         iata_to,
+        airport_from: airportFrom.name,
+        airport_to: airportTo.name,
         date_departure,
         date_arrival,
         est_time,
         price,
         gate,
         airplane_id,
-        airline_id,
-        stock,
+        airplane_name: airplane.name,
+        airline_name: airline.name,
+        stock: airplane.capacity,
       });
 
       return res.status(200).json({
