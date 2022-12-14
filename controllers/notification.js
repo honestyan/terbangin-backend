@@ -3,7 +3,7 @@ const { Transaction } = require("../models");
 module.exports = {
   hadlingPayment: async (req, res, next) => {
     try {
-      const { transaction_status, order_id } = req.params;
+      const { transaction_status, order_id } = req.body;
 
       const transaction = await Transaction.findOne({
         where: { payment_id: order_id },
@@ -32,7 +32,7 @@ module.exports = {
         data: updatedTransaction,
       });
     } catch (error) {
-      next(err);
+      next(error);
     }
   },
 };
