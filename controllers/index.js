@@ -6,5 +6,16 @@ const transaction = require("./transaction");
 const airline = require("./airline");
 const airplane = require("./airplane");
 const bookingdetail = require("./bookingdetail");
+const notification = require("./notification");
 
-module.exports = { auth, airport, admin, product, transaction,airline,airplane,bookingdetail };
+module.exports = {
+  auth,
+  airport,
+  admin,
+  product,
+  transaction,
+  airline,
+  airplane,
+  bookingdetail,
+  notification,
+};
