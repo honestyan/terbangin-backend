@@ -4,6 +4,7 @@ const auth = require("./auth");
 const admin = require("./admin");
 const product = require("./product");
 const transaction = require("./transaction");
+const bookingdetail = require("./bookingdetail");
 
 router.get("/", (req, res) => {
   return res.status(200).json({
@@ -16,5 +17,6 @@ router.use("/admin", admin);
 router.use("/auth", auth);
 router.use("/product", product);
 router.use("/transaction", transaction);
+router.use("/bookingdetail", bookingdetail);
 
 module.exports = router;
