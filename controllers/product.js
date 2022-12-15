@@ -316,7 +316,7 @@ module.exports = {
       let iata_to= '%' ;
       let date_departure=null;
       let date_arrival=null;
-      console.log(iata_to);
+      // console.log(iata_to);
       if(req.query.iata_from!=undefined){
         iata_to = req.query.iata_from;
       }
@@ -329,12 +329,12 @@ module.exports = {
       if(req.query.date_arrival!=undefined){
         date_arrival = req.query.date_arrival;
       }
-
+      //hasil search jika tidak ada param
       if(!iata_from && !iata_to &&  !date_departure && !date_arrival){
-        tjis.getAll;
+        this.getAll;
       }
       let product = {};
-      //hasil search jika date_departure atau date_arrival terisi
+      //hasil search jika iata_from dan atau iata_to, date_departure dan date_arrival terisi
       if( date_departure && date_arrival){
         console.log("2");
         product = await Product.findAll({
@@ -356,7 +356,7 @@ module.exports = {
           }
         });
       }else if(date_departure){
-        //hasil search jika date_departure terisi
+        //hasil search jika iata_from dan atau iata_to, date_departure terisi
         console.log("1 depar");
         product = await Product.findAll({
           where: {
@@ -374,7 +374,7 @@ module.exports = {
           }
         });
       }else if(date_arrival){
-        //hasil search jika date_arrival terisi
+        //hasil search jika iata_from dan atau iata_to, date_arrival terisi
         console.log("1 arrival");
         product = await Product.findAll({
           where: {
