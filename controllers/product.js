@@ -329,7 +329,7 @@ module.exports = {
       if(req.query.date_arrival!=undefined){
         date_arrival = req.query.date_arrival;
       }
-      //hasil search jika tidak ada param
+      //hasil search jika tidak ada query
       if(!iata_from && !iata_to &&  !date_departure && !date_arrival){
         this.getAll;
       }
