@@ -67,8 +67,8 @@ module.exports = {
         est_time,
         price,
         gate,
-        airplane_id : 1,
-        stock: 11,
+        airplane_id,
+        stock,
       });
 
       let productDetail = {
@@ -421,6 +421,25 @@ module.exports = {
         data: product,
       });
     } catch (err) {
+      next(err);
+    }
+  },
+  pagination:async (req, res, next) => {
+    try {
+      const page = req.query.page;
+      const size = req.query.size;
+      console.log(page," ", size)
+      const offset = (page-1)*size; //offset = batas bawah
+      const limit = size; //limit = jumlah data yang ditampilkan
+      console.log(offset," ", limit)
+
+      const product = await Product.findAndCountAll({ limit, offset })
+      return res.status(200).json({
+        status: true,
+        message: "Product found",
+        data: product,
+      });
+    }catch(err){
       next(err);
     }
   }
