@@ -1,4 +1,5 @@
 "use strict";
+const { resolveContent } = require("nodemailer/lib/shared");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
@@ -9,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Product.belongsTo(models.Airplane, {
+        foreignKey: "airplane_id",
+        as: "airplane",
+      });
     }
   }
   Product.init(
