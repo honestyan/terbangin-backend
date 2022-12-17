@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { Admin, User } = require("../models");
-
+const { Admin, User, Transaction } = require("../models");
 const { JWT_SIGNATURE_KEY } = process.env;
 
 module.exports = {
