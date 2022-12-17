@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(router);
 
-app.use('/public/document',express.static('public/document'));
+app.use("/public/document", express.static("public/document"));
 
 app.use((req, res, next) => {
   return res.status(404).json({
