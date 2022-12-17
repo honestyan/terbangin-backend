@@ -34,4 +34,18 @@ router.post("/airline/", mid.mustAdmin, controller.airline.create);
 router.put("/airline/:id", mid.mustAdmin, controller.airline.update);
 router.delete("/airline/:id", mid.mustAdmin, controller.airline.delete);
 
+//transaction
+router.get("/transaction/", mid.mustAdmin, controller.transaction.getAll);
+router.delete("/transaction/:id", mid.mustAdmin, controller.transaction.delete);
+
+//notification
+router.get("/notification/", mid.mustAdmin, controller.notification.getAll);
+router.delete(
+  "/notification/:id",
+  mid.mustAdmin,
+  controller.notification.delete
+);
+router.post("/notification/", mid.mustAdmin, controller.notification.create);
+router.put("/notification/:id", mid.mustAdmin, controller.notification.update);
+
 module.exports = router;

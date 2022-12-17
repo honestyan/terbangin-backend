@@ -18,7 +18,7 @@ router.use("/admin", admin);
 router.use("/auth", auth);
 router.use("/product", product);
 router.use("/transaction", transaction);
-router.use("/bookingdetail", bookingdetail);
+router.use("/bookingDetail", bookingdetail);
 router.use("/notification", notification);
 
 module.exports = router;
