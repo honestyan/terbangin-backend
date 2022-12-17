@@ -1,4 +1,5 @@
 const { Product, Airport, Airplane, Airline } = require("../models");
+const product = require("../models/product");
 
 module.exports = {
   create: async (req, res, next) => {
@@ -120,36 +121,6 @@ module.exports = {
           message: "All fields must be filled",
         });
       }
-
-      const airportFrom = await Airport.findOne({
-        where: { iata: iata_from },
-      });
-      const airportTo = await Airport.findOne({
-        where: { iata: iata_to },
-      });
-
-      if (!airportFrom || !airportTo) {
-        return res.status(401).json({
-          status: false,
-          message: "Airport not found",
-        });
-      }
-
-      const airplane = await Airplane.findOne({
-        where: { id: airplane_id },
-      });
-
-      const airline = await Airline.findOne({
-        where: { id: airplane.airline_id },
-      });
-
-      if (!airplane || !airline) {
-        return res.status(401).json({
-          status: false,
-          message: "Airplane or airline not found",
-        });
-      }
-
       const product = await Product.update(
         {
           iata_from,
@@ -164,17 +135,26 @@ module.exports = {
         },
         {
           where: { id },
+          include: [
+            {
+              model: Airplane,
+              as: "airplane",
+              attributes: {
+                exclude: ["createdAt", "updatedAt"],
+              },
+              include: [
+                {
+                  model: Airline,
+                  as: "airline",
+                  attributes: {
+                    exclude: ["createdAt", "updatedAt"],
+                  },
+                },
+              ],
+            },
+          ],
         }
       );
-
-      let productDetail = {
-        airport_from: airportFrom.name,
-        airport_to: airportTo.name,
-        airplane: airplane.name,
-        airline: airline.name,
-      };
-
-      const result = { ...req.body, ...productDetail };
 
       return res.status(200).json({
         status: true,
@@ -217,46 +197,92 @@ module.exports = {
 
   getAll: async (req, res, next) => {
     try {
-      const product = await Product.findAll();
+      const { iata_from, iata_to, date } = req.query;
+      if (iata_from && iata_to && date) {
+        var products = await Product.findAll({
+          where: {
+            iata_from,
+            iata_to,
+          },
+          include: [
+            {
+              model: Airplane,
+              as: "airplane",
+              attributes: {
+                exclude: ["createdAt", "updatedAt"],
+              },
+              include: [
+                {
+                  model: Airline,
+                  as: "airline",
+                  attributes: {
+                    exclude: ["createdAt", "updatedAt"],
+                  },
+                },
+              ],
+            },
+          ],
+          order: [
+            ["date_departure", "ASC"],
+            ["date_arrival", "ASC"],
+          ],
+        });
+        //only show product that date_departure = date
+        products = products.filter((product) => {
+          return product.date_departure.toISOString().split("T")[0] === date;
+        });
+      } else {
+        var products = await Product.findAll({
+          include: [
+            {
+              model: Airplane,
+              as: "airplane",
+              attributes: {
+                exclude: ["createdAt", "updatedAt"],
+              },
+              include: [
+                {
+                  model: Airline,
+                  as: "airline",
+                  attributes: {
+                    exclude: ["createdAt", "updatedAt"],
+                  },
+                },
+              ],
+            },
+          ],
+          order: [
+            ["date_departure", "ASC"],
+            ["date_arrival", "ASC"],
+          ],
+        });
+      }
 
-      if (product.length === 0) {
+      if (products.length === 0) {
         return res.status(401).json({
           status: false,
           message: "Product not found",
         });
       }
 
-      for (let i = 0; i < product.length; i++) {
-        const airportFrom = await Airport.findOne({
-          where: { iata: product[i].iata_from },
+      //pagination
+      if (!req.query.page && !req.query.limit) {
+        return res.status(200).json({
+          status: true,
+          message: "List of products",
+          data: products,
         });
-        const airportTo = await Airport.findOne({
-          where: { iata: product[i].iata_to },
-        });
-
-        const airplane = await Airplane.findOne({
-          where: { id: product[i].airplane_id },
-        });
-
-        const airline = await Airline.findOne({
-          where: { id: airplane.airline_id },
-        });
-
-        let productDetail = {
-          airport_from: airportFrom.name,
-          airport_to: airportTo.name,
-          airplane: airplane.name,
-          airline: airline.name,
-        };
-
-        const result = { ...product[i].dataValues, ...productDetail };
-        product[i] = result;
       }
+      const { page, limit } = req.query;
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+
+      products = products.slice(startIndex, endIndex);
 
       return res.status(200).json({
         status: true,
-        message: "Product found",
-        data: product,
+        message: "List of products",
+        data: products,
       });
     } catch (err) {
       next(err);
@@ -268,6 +294,24 @@ module.exports = {
 
       const product = await Product.findOne({
         where: { id },
+        include: [
+          {
+            model: Airplane,
+            as: "airplane",
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+            include: [
+              {
+                model: Airline,
+                as: "airline",
+                attributes: {
+                  exclude: ["createdAt", "updatedAt"],
+                },
+              },
+            ],
+          },
+        ],
       });
 
       if (!product) {
@@ -283,23 +327,13 @@ module.exports = {
       const airportTo = await Airport.findOne({
         where: { iata: product.iata_to },
       });
-
-      const airplane = await Airplane.findOne({
-        where: { id: product.airplane_id },
-      });
-
-      const airline = await Airline.findOne({
-        where: { id: airplane.airline_id },
-      });
-
-      let productDetail = {
+      let airport = {
         airport_from: airportFrom.name,
         airport_to: airportTo.name,
-        airplane: airplane.name,
-        airline: airline.name,
+        city_from: airportFrom.city,
+        city_to: airportTo.city,
       };
-
-      const result = { ...product.dataValues, ...productDetail };
+      const result = { ...product.dataValues, ...airport };
 
       return res.status(200).json({
         status: true,
