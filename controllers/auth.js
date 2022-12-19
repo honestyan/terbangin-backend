@@ -62,7 +62,7 @@ module.exports = {
 
       let htmlEmail = await utilEmail.getHtml("reset-password.ejs", {
         name: user.name,
-        link: `${BASE_URL_STAGE}/login?=${token}`,
+        link: `${BASE_URL_STAGE}/login?token=${token}`,
       });
 
       const sendMail = await utilEmail.sendEmail(
