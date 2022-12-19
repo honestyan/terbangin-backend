@@ -1,4 +1,4 @@
-const { JWT_SIGNATURE_KEY, BASE_URL } = process.env;
+const { JWT_SIGNATURE_KEY, BASE_URL, BASE_URL_STAGE } = process.env;
 const { User, Admin, Airport } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -46,7 +46,6 @@ module.exports = {
         userType: userType.basic,
         isActive: false,
       });
-      console.log(userType.basic, user.isActive);
 
       const token = jwt.sign(
         {
@@ -63,7 +62,7 @@ module.exports = {
 
       let htmlEmail = await utilEmail.getHtml("reset-password.ejs", {
         name: user.name,
-        link: `${BASE_URL}/auth/verify/${token}`,
+        link: `${BASE_URL_STAGE}/login?=${token}`,
       });
 
       const sendMail = await utilEmail.sendEmail(
