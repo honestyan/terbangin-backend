@@ -7,7 +7,6 @@ const mid = require("../helpers/middleware");
 router.post("/login", controller.admin.login);
 
 //airport
-router.get("/airport/", mid.mustAdmin, controller.airport.search);
 router.get("/airport/", mid.mustAdmin, controller.airport.getAll);
 router.get("/airport/:id", mid.mustAdmin, controller.airport.getOne);
 router.post("/airport/", mid.mustAdmin, controller.airport.create);
@@ -30,7 +29,6 @@ router.put("/airplane/:id", mid.mustAdmin, controller.airplane.update);
 router.delete("/airplane/:id", mid.mustAdmin, controller.airplane.delete);
 
 //airline
-router.get("/airline/", mid.mustAdmin, controller.airline.search);
 router.get("/airline/", mid.mustAdmin, controller.airline.getAll);
 router.get("/airline/:id", mid.mustAdmin, controller.airline.getOne);
 router.post("/airline/", mid.mustAdmin, controller.airline.create);
