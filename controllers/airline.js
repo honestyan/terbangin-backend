@@ -1,13 +1,13 @@
-const { Airport } = require("../models");
+const { Airline } = require("../models");
 
 module.exports = {
   getAll: async (req, res, next) => {
     try {
-      const airports = await Airport.findAll();
+      const airlines = await Airline.findAll();
       return res.status(200).json({
         status: true,
-        message: "List of airports",
-        data: airports,
+        message: "List of airlines",
+        data: airlines,
       });
     } catch (error) {
       next(err);
@@ -16,19 +16,19 @@ module.exports = {
   getOne: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const airport = await Airport.findOne({
+      const airline = await Airline.findOne({
         where: { id },
       });
-      if (!airport) {
+      if (!airline) {
         return res.status(401).json({
           status: false,
-          message: "Airport not found",
+          message: "Airline not found",
         });
       }
       return res.status(200).json({
         status: true,
-        message: "Airport found",
-        data: airport,
+        message: "Airline found",
+        data: airline,
       });
     } catch (err) {
       next(err);
@@ -36,25 +36,22 @@ module.exports = {
   },
   create: async (req, res, next) => {
     try {
-      const { iata, name, city, country, latitude, longitude } = req.body;
-      if (!iata || !name || !city || !country || !latitude || !longitude) {
+      const { name, country, phone } = req.body;
+      if (!name ||  !country || !phone ) {
         return res.status(400).json({
           status: false,
           message: "Please fill all the fields",
         });
       }
-      const airport = await Airport.create({
-        iata,
-        name,
-        city,
-        country,
-        latitude,
-        longitude,
+      const airline = await Airline.create({
+        name, 
+        country, 
+        phone 
       });
       return res.status(200).json({
         status: true,
-        message: "Airport created",
-        data: airport,
+        message: "Airline created",
+        data: airline,
       });
     } catch (err) {
       next(err);
@@ -63,32 +60,29 @@ module.exports = {
   update: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { iata, name, city, country, latitude, longitude } = req.body;
-      if (!iata || !name || !city || !country || !latitude || !longitude) {
+      const {name, country, phone } = req.body;
+      if (!name ||  !country || !phone) {
         return res.status(400).json({
           status: false,
           message: "Please fill all the fields",
         });
       }
-      const airport = await Airport.findByPk(id);
-      if (!airport) {
+      const airline = await Airline.findByPk(id);
+      if (!airline) {
         return res.status(404).json({
           status: false,
-          message: "Airport not found",
+          message: "Airline not found",
         });
       }
-      await airport.update({
-        iata,
-        name,
-        city,
-        country,
-        latitude,
-        longitude,
+      await airline.update({
+        name, 
+        country, 
+        phone
       });
       return res.status(200).json({
         status: true,
-        message: "Airport updated",
-        data: airport,
+        message: "Airline updated",
+        data: airline,
       });
     } catch (err) {
       next(err);
@@ -97,17 +91,17 @@ module.exports = {
   delete: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const airport = await Airport.findByPk(id);
-      if (!airport) {
+      const airline = await Airline.findByPk(id);
+      if (!airline) {
         return res.status(404).json({
           status: false,
-          message: "Airport not found",
+          message: "Airline not found",
         });
       }
-      await airport.destroy();
+      await airline.destroy();
       return res.status(200).json({
         status: true,
-        message: "Airport deleted",
+        message: "Airline deleted",
       });
     } catch (err) {
       next(err);

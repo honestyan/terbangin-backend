@@ -1,4 +1,4 @@
-const { JWT_SIGNATURE_KEY, BASE_URL } = process.env;
+const { JWT_SIGNATURE_KEY, BASE_URL, BASE_URL_STAGE } = process.env;
 const { User, Admin, Airport } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -46,7 +46,6 @@ module.exports = {
         userType: userType.basic,
         isActive: false,
       });
-      console.log(userType.basic, user.isActive);
 
       const token = jwt.sign(
         {
@@ -63,7 +62,7 @@ module.exports = {
 
       let htmlEmail = await utilEmail.getHtml("reset-password.ejs", {
         name: user.name,
-        link: `${BASE_URL}/auth/verify/${token}`,
+        link: `${BASE_URL_STAGE}/login?token=${token}`,
       });
 
       const sendMail = await utilEmail.sendEmail(
@@ -284,7 +283,7 @@ module.exports = {
   //   }
   // },
   //selain email, link tampilan reset password juga dikirim
-  //di form reset, token dikirm lewat query
+  //di form reset, token dikirm lewat que
   forgotPasswordBE: async (req, res, next) => {
     try {
       const { email, linkreset } = req.body;
@@ -347,12 +346,13 @@ module.exports = {
     try {
       const existUser = await User.findOne({ where: { id: req.user.id } });
 
-      if (!existUser){
+      if (!existUser) {
         return res.status(404).json({
-          success: false, message: "User not found!" 
-        }); 
+          success: false,
+          message: "User not found!",
+        });
       }
-            
+
       return res.status(200).json({
         status: true,
         message: "read profile information success",
@@ -368,17 +368,18 @@ module.exports = {
       const { newName, newPhone, newUserType } = req.body;
       const existUser = await User.findOne({ where: { id: req.user.id } });
 
-      if (!existUser){
+      if (!existUser) {
         return res.status(404).json({
-          success: false, message: "User not found!" 
-        }); 
+          success: false,
+          message: "User not found!",
+        });
       }
-      
+
       const updatedUser = await User.update(
-        { 
-          name:newName,
+        {
+          name: newName,
           phone: newPhone,
-          userType:newUserType
+          userType: newUserType,
         },
         { where: { id: existUser.id } }
       );
@@ -391,5 +392,5 @@ module.exports = {
     } catch (err) {
       next(err);
     }
-  }
+  },
 };

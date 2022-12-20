@@ -1,13 +1,13 @@
-const { Airport } = require("../models");
+const { Airplane } = require("../models");
 
 module.exports = {
   getAll: async (req, res, next) => {
     try {
-      const airports = await Airport.findAll();
+      const airplanes = await Airplane.findAll();
       return res.status(200).json({
         status: true,
-        message: "List of airports",
-        data: airports,
+        message: "List of airplanes",
+        data: airplanes,
       });
     } catch (error) {
       next(err);
@@ -16,19 +16,19 @@ module.exports = {
   getOne: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const airport = await Airport.findOne({
+      const airplane = await Airplane.findOne({
         where: { id },
       });
-      if (!airport) {
+      if (!airplane) {
         return res.status(401).json({
           status: false,
-          message: "Airport not found",
+          message: "Airplane not found",
         });
       }
       return res.status(200).json({
         status: true,
-        message: "Airport found",
-        data: airport,
+        message: "Airplane found",
+        data: airplane,
       });
     } catch (err) {
       next(err);
@@ -36,25 +36,28 @@ module.exports = {
   },
   create: async (req, res, next) => {
     try {
-      const { iata, name, city, country, latitude, longitude } = req.body;
-      if (!iata || !name || !city || !country || !latitude || !longitude) {
+      const { name, capacity, airline_id } = req.body;
+      if (!name || !capacity || !airline_id) {
         return res.status(400).json({
           status: false,
           message: "Please fill all the fields",
         });
       }
-      const airport = await Airport.create({
-        iata,
+
+      let total_seat_colum = capacity / 6;
+      let total_seat_row = capacity / total_seat_colum;
+
+      const airplane = await Airplane.create({
         name,
-        city,
-        country,
-        latitude,
-        longitude,
+        capacity,
+        airline_id,
+        total_seat_row,
+        total_seat_colum,
       });
       return res.status(200).json({
         status: true,
-        message: "Airport created",
-        data: airport,
+        message: "Airplane created",
+        data: airplane,
       });
     } catch (err) {
       next(err);
@@ -63,32 +66,35 @@ module.exports = {
   update: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { iata, name, city, country, latitude, longitude } = req.body;
-      if (!iata || !name || !city || !country || !latitude || !longitude) {
+      const { name, capacity, airline_id } = req.body;
+      if (!name || !capacity || !airline_id) {
         return res.status(400).json({
           status: false,
           message: "Please fill all the fields",
         });
       }
-      const airport = await Airport.findByPk(id);
-      if (!airport) {
+
+      let total_seat_colum = capacity / 6;
+      let total_seat_row = capacity / total_seat_colum;
+
+      const airplane = await Airplane.findByPk(id);
+      if (!airplane) {
         return res.status(404).json({
           status: false,
-          message: "Airport not found",
+          message: "Airplane not found",
         });
       }
-      await airport.update({
-        iata,
+      await airplane.update({
         name,
-        city,
-        country,
-        latitude,
-        longitude,
+        capacity,
+        airline_id,
+        total_seat_row,
+        total_seat_colum,
       });
       return res.status(200).json({
         status: true,
-        message: "Airport updated",
-        data: airport,
+        message: "Airplane updated",
+        data: airplane,
       });
     } catch (err) {
       next(err);
@@ -97,17 +103,17 @@ module.exports = {
   delete: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const airport = await Airport.findByPk(id);
-      if (!airport) {
+      const airplane = await Airplane.findByPk(id);
+      if (!airplane) {
         return res.status(404).json({
           status: false,
-          message: "Airport not found",
+          message: "Airplane not found",
         });
       }
-      await airport.destroy();
+      await airplane.destroy();
       return res.status(200).json({
         status: true,
-        message: "Airport deleted",
+        message: "Airplane deleted",
       });
     } catch (err) {
       next(err);
