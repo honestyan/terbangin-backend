@@ -1,0 +1,5 @@
+.env.bak
+.env
+node_modules/
+package-lock.json
+public/
