@@ -18,23 +18,23 @@ app.use(router);
 app.use("/public/document", express.static("public/document"));
 
 app.use((req, res, next) => {
-  return res.status(404).json({
-    status: false,
-    message: "Are you lost?",
-  });
+    return res.status(404).json({
+        status: false,
+        message: "Are you lost?",
+    });
 });
 
 // 500 handler
 app.use((err, req, res, next) => {
-  console.log(err);
-  return res.status(500).json({
-    status: false,
-    message: err.message,
-  });
+    console.log(err);
+    return res.status(500).json({
+        status: false,
+        message: err.message,
+    });
 });
 
 const server = app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
 
 module.exports = server;
