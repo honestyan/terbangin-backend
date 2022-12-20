@@ -21,6 +21,7 @@ router.put("/product/:id", mid.mustAdmin, controller.product.update);
 router.delete("/product/:id", mid.mustAdmin, controller.product.delete);
 
 //airplane
+router.get("/airplane/", mid.mustAdmin, controller.airplane.search);
 router.get("/airplane/", mid.mustAdmin, controller.airplane.getAll);
 router.get("/airplane/:id", mid.mustAdmin, controller.airplane.getOne);
 router.post("/airplane", mid.mustAdmin, controller.airplane.create);
@@ -41,9 +42,9 @@ router.delete("/transaction/:id", mid.mustAdmin, controller.transaction.delete);
 //notification
 router.get("/notification/", mid.mustAdmin, controller.notification.getAll);
 router.delete(
-  "/notification/:id",
-  mid.mustAdmin,
-  controller.notification.delete
+    "/notification/:id",
+    mid.mustAdmin,
+    controller.notification.delete
 );
 router.post("/notification/", mid.mustAdmin, controller.notification.create);
 router.put("/notification/:id", mid.mustAdmin, controller.notification.update);
