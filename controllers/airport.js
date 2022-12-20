@@ -1,5 +1,4 @@
 const { Airport } = require("../models");
-const { Op } = require("sequelize");
 
 module.exports = {
     getAll: async(req, res, next) => {
