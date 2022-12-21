@@ -1,4 +1,5 @@
 const { Airport } = require("../models");
+const { Op } = require("sequelize");
 
 module.exports = {
   getAll: async (req, res, next) => {
@@ -58,6 +59,43 @@ module.exports = {
       });
     } catch (err) {
       next(err);
+    }
+  },
+
+  search: async (req, res, next) => {
+    try {
+      const page = parseInt(req.query.page) || 0;
+      const limit = parseInt(req.query.limit) || 10;
+      const search = req.query.search || "";
+      const offset = limit * page;
+
+      const totalRows = await Airport.count({
+        where: {
+          name: {
+            [Op.like]: "%" + search + "%",
+          },
+        },
+      });
+      const totalPage = Math.ceil(totalRows / limit);
+      const result = await Airport.findAll({
+        where: {
+          name: {
+            [Op.like]: "%" + search + "%",
+          },
+        },
+        offset: offset,
+        limit: limit,
+        order: [["name", "DESC"]],
+      });
+      res.json({
+        result: result,
+        page: page,
+        limit: limit,
+        totalRows: totalRows,
+        totalPage: totalPage,
+      });
+    } catch (error) {
+      next(error);
     }
   },
   update: async (req, res, next) => {
