@@ -4,6 +4,21 @@ const { Op } = require("sequelize");
 module.exports = {
   getAll: async (req, res, next) => {
     try {
+      if (req.query.city) {
+        let city = req.query.city.toLowerCase();
+        const airports = await Airport.findAll({
+          where: {
+            city: {
+              [Op.iLike]: `%${city}%`,
+            },
+          },
+        });
+        return res.status(200).json({
+          status: true,
+          message: "List of airports",
+          data: airports,
+        });
+      }
       const airports = await Airport.findAll();
       return res.status(200).json({
         status: true,
@@ -11,7 +26,7 @@ module.exports = {
         data: airports,
       });
     } catch (error) {
-      next(err);
+      next(error);
     }
   },
   getOne: async (req, res, next) => {
