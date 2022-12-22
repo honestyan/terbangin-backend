@@ -170,7 +170,9 @@ module.exports = {
 
   google: async (req, res, next) => {
     try {
-      const code = req.query.code;
+      // const code = req.query.code;
+      let code =
+        "4%2F0AWgavdekzfq_pWBurf3Pq8boWxVD00DQr0rsxjNBlP6QN8J_0_DsDZ6Q3hjIJgCUkyRmUA";
 
       if (!code) {
         const url = googleOauth2.generateAuthURL();

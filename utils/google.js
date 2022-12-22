@@ -30,7 +30,6 @@ module.exports = {
       try {
         const { tokens } = await oauth2Client.getToken(code);
         oauth2Client.setCredentials(tokens);
-
         return resolve(tokens);
       } catch (err) {
         return reject(err);
