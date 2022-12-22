@@ -6,7 +6,7 @@ const mid = require("../helpers/middleware");
 router.post("/register", controller.auth.register);
 router.post("/login", controller.auth.login);
 router.get("/verify/:token", controller.auth.verify);
-router.get("/google", controller.auth.google);
+router.post("/googleOauth", controller.auth.googleOauth);
 router.post("/changePassword", mid.mustLogin, controller.auth.changePassword);
 router.post("/forgotPassword", controller.auth.forgotPasswordBE);
 router.post("/resetPassword", controller.auth.resetPassword);

@@ -2,7 +2,6 @@ const { JWT_SIGNATURE_KEY, BASE_URL, BASE_URL_STAGE } = process.env;
 const { User, Admin, Airport } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const googleOauth2 = require("../utils/google");
 const userType = require("../utils/userType");
 const utilEmail = require("../utils/email");
 
@@ -160,6 +159,9 @@ module.exports = {
         status: true,
         message: "success login",
         data: {
+          id: user.id,
+          name: user.username,
+          email: user.email,
           token,
         },
       });
@@ -168,26 +170,30 @@ module.exports = {
     }
   },
 
-  google: async (req, res, next) => {
+  googleOauth: async (req, res, next) => {
     try {
-      const code = req.query.code;
+      let { credential } = req.body;
 
-      if (!code) {
-        const url = googleOauth2.generateAuthURL();
-        return res.redirect(url);
+      if (!credential) {
+        return res.status(400).json({
+          status: false,
+          message: "credential not found!",
+        });
       }
 
-      await googleOauth2.setCredentials(code);
+      let credentialDecode = JSON.parse(
+        Buffer.from(credential.split(".")[1], "base64").toString()
+      );
 
-      let { data } = await googleOauth2.getUserData();
-
-      const userExist = await User.findOne({ where: { email: data.email } });
+      const userExist = await User.findOne({
+        where: { email: credentialDecode.email },
+      });
 
       if (!userExist) {
         userExist = await User.create({
-          username: data.email.split("@")[0],
-          email: data.email,
-          name: data.name,
+          username: credentialDecode.email.split("@")[0],
+          email: credentialDecode.email,
+          name: credentialDecode.name,
           userType: userType.google,
         });
       }
@@ -207,6 +213,8 @@ module.exports = {
         message: "success",
         data: {
           user_id: userExist.id,
+          username: userExist.username,
+          email: userExist.email,
           token,
         },
       });
