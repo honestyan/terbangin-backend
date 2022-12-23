@@ -6,7 +6,10 @@ const {
 } = require("../models");
 const payment = require("../utils/payment");
 const { BASE_URL } = process.env;
-
+const storage = require("../utils/storage");
+const multer = require('multer');
+const upload = multer();
+const imagekit = require('../utils/imagekit');
 module.exports = {
   createTransaction: async (req, res, next) => {
     try {
@@ -270,4 +273,21 @@ module.exports = {
       next(error);
     }
   },
+  uploadFile: async (req,res,next)=>{
+    try{
+      const file = req.file.buffer.toString("base64");
+    
+      const uploadedFile = await imagekit.upload({
+          file,
+          fileName: req.file.originalname
+      });
+
+      // return res.send(uploadedFile.url);
+      return res.json({
+          url : uploadedFile.url
+      });
+    }catch(err){
+      next(error)
+    }
+  }
 };
