@@ -50,5 +50,6 @@ router.delete(
 );
 router.post("/notification/", mid.mustAdmin, controller.notification.create);
 router.put("/notification/:id", mid.mustAdmin, controller.notification.update);
+router.get("/notification/search", mid.mustAdmin, controller.notification.search);
 
 module.exports = router;

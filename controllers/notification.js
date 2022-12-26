@@ -1,4 +1,5 @@
 const { Transaction, Notification } = require("../models");
+const { Op } = require("sequelize");
 
 module.exports = {
   hadlingPayment: async (req, res, next) => {
@@ -275,4 +276,83 @@ module.exports = {
       next(error);
     }
   },
+  //this search can use user_id, title, is read optionally
+  search: async (req, res, next) => {
+    try {
+      let  user_id ;
+      const title = req.query.title || "";
+      const is_read = req.query.is_read;
+      const page = parseInt(req.query.page) || 0;
+      const limit = parseInt(req.query.limit) || 10;
+      const offset = limit * page;
+
+      //There are two possibilities that use the search notification feature, namely user and admin. 
+      //If the user is accessing it, the where condition will increase with the user_id. 
+      //If admin is accesing it, this will return notifications from all users, 
+      //the admin can add req.query.user_id if the admin wants to see notifications from a specific user.
+      if(req.hasOwnProperty('user')){
+        user_id = req.user.id
+      }else if (req.query.user_id){
+        user_id = req.query.user_id
+      }
+      //define where, using the "LIKE" condition because if there is a value between the "%" signs, it will search for rows containing that value, 
+      //but if there is no carachter between the "%" it is the same as ignoring the "LIKE" condition.
+      //Example : SELECT * FROM NOTIFICATION WHERE title LIKE "%%" ;
+      //Is same with : SELECT * FROM NOTIFICATION ;
+      const where = {};
+      where[Op.and] = [{
+        title:{
+          [Op.iLike]: "%" + title + "%"
+        },
+      }];
+
+      
+      //"LIKE" is not used to avoid the possibility that the user will see another user's notification.
+      //Example : "SELECT * FROM NOTIFICATION WHERE user_id 'LIKE %1%' ";
+      //Notifications that appear come from notifications with user_id 1, 10, 11, 21 and other user_id containing the number 1.
+      if(user_id){
+        where[Op.and].push({
+          user_id: {
+            [Op.eq]: user_id
+          }
+        })
+      }
+      //
+      //like doesn't work for columns with boolean values, so we add a new condition to the where array.
+      if(is_read){
+        where[Op.and].push({
+          is_read: {
+            [Op.eq]: is_read
+          }
+        })
+      }
+
+      const notifications = await Notification.findAndCountAll({ 
+        where,
+        offset,
+        limit
+      });
+
+      const totalRows = notifications.count;
+      const TotalPage = Math.ceil(totalRows / limit);
+
+      if (!notifications.rows.length) {
+        return res.status(400).json({
+          status: false,
+          message: "no notification found",
+          data: notifications,
+        });
+      }
+
+      return res.status(200).json({
+        status: true,
+        message: "success get all notification",
+        totalrows : totalRows,
+        totalpage : TotalPage,
+        data: notifications.rows,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 };
