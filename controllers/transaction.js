@@ -265,7 +265,17 @@ module.exports = {
   uploadFile: async (req, res, next) => {
     try {
       const file = req.file.buffer.toString("base64");
-
+      //filter only image and document
+      if (
+        req.file.mimetype !== "image/jpeg" &&
+        req.file.mimetype !== "image/png" &&
+        req.file.mimetype !== "application/pdf"
+      ) {
+        return res.status(400).json({
+          status: false,
+          message: "file type not supported",
+        });
+      }
       const uploadedFile = await imagekit.upload({
         file,
         fileName: req.file.originalname,

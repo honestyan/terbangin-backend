@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers");
 const mid = require("../helpers/middleware");
+const multer = require("multer");
+const upload = multer();
 
 //auth
 router.post("/login", controller.admin.login);
@@ -50,6 +52,18 @@ router.delete(
 );
 router.post("/notification/", mid.mustAdmin, controller.notification.create);
 router.put("/notification/:id", mid.mustAdmin, controller.notification.update);
-router.get("/notification/search", mid.mustAdmin, controller.notification.search);
+router.get(
+  "/notification/search",
+  mid.mustAdmin,
+  controller.notification.search
+);
+
+//upload
+router.post(
+  "/upload/",
+  mid.mustAdmin,
+  upload.single("document"),
+  controller.transaction.uploadFile
+);
 
 module.exports = router;

@@ -37,8 +37,8 @@ module.exports = {
   },
   create: async (req, res, next) => {
     try {
-      const { name, country, phone } = req.body;
-      if (!name || !country || !phone) {
+      const { name, country, phone, logo } = req.body;
+      if (!name || !country || !phone || !logo) {
         return res.status(400).json({
           status: false,
           message: "Please fill all the fields",
@@ -48,6 +48,7 @@ module.exports = {
         name,
         country,
         phone,
+        logo,
       });
       return res.status(200).json({
         status: true,
