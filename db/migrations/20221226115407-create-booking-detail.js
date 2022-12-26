@@ -15,6 +15,12 @@ module.exports = {
       passenger_name: {
         type: Sequelize.STRING
       },
+      nik: {
+        type: Sequelize.STRING
+      },
+      dob: {
+        type: Sequelize.DATEONLY
+      },
       seat: {
         type: Sequelize.STRING
       },

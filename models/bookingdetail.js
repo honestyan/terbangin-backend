@@ -16,6 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   BookingDetail.init({
     transaction_id: DataTypes.INTEGER,
     passenger_name: DataTypes.STRING,
+    nik: DataTypes.STRING,
+    dob: DataTypes.DATEONLY,
     seat: DataTypes.STRING,
     visa: DataTypes.STRING,
     passport: DataTypes.STRING,

@@ -4,7 +4,6 @@ const auth = require("./auth");
 const admin = require("./admin");
 const product = require("./product");
 const transaction = require("./transaction");
-const bookingdetail = require("./bookingdetail");
 const notification = require("./notification");
 const airport = require("./airport");
 
@@ -19,7 +18,6 @@ router.use("/admin", admin);
 router.use("/auth", auth);
 router.use("/product", product);
 router.use("/transaction", transaction);
-router.use("/bookingDetail", bookingdetail);
 router.use("/notification", notification);
 router.use("/airport", airport);
 

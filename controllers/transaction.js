@@ -5,15 +5,11 @@ const {
   Notification,
 } = require("../models");
 const payment = require("../utils/payment");
-const { BASE_URL } = process.env;
-const storage = require("../utils/storage");
-const multer = require('multer');
-const upload = multer();
-const imagekit = require('../utils/imagekit');
+const imagekit = require("../utils/imagekit");
 module.exports = {
   createTransaction: async (req, res, next) => {
     try {
-      const { product_id, pax } = req.body;
+      const { product_id, pax, detail } = req.body;
       const user_id = req.user.id;
       let payment_id = await payment.generate();
       const product = await Product.findOne({ where: { id: product_id } });
@@ -49,6 +45,20 @@ module.exports = {
           status: false,
           message: "failed create transaction",
           data: createTransaction,
+        });
+      }
+
+      detail.forEach((item) => {
+        item.transaction_id = createTransaction.id;
+      });
+
+      const createDetail = await BookingDetail.bulkCreate(detail);
+
+      if (!createDetail) {
+        return res.status(400).json({
+          status: false,
+          message: "failed create detail",
+          data: createDetail,
         });
       }
 
@@ -97,6 +107,7 @@ module.exports = {
       const token = req.user;
       const transactions = await Transaction.findAll({
         where: { user_id: token.id },
+        order: [["createdAt", "DESC"]],
       });
 
       if (!transactions.length) {
@@ -117,16 +128,6 @@ module.exports = {
           return transaction;
         })
       );
-
-      //insert base_url/public/document/ to booking detail visa passport izin
-      result.map((transaction) => {
-        transaction.dataValues.bookingDetail.map((bookingDetail) => {
-          bookingDetail.dataValues.visa = `${BASE_URL}/public/document/${bookingDetail.visa}`;
-          bookingDetail.dataValues.passport = `${BASE_URL}/public/document/${bookingDetail.passport}`;
-          bookingDetail.dataValues.izin = `${BASE_URL}/public/document/${bookingDetail.izin}`;
-        });
-      });
-
       return res.status(200).json({
         status: true,
         message: "success get all transactions",
@@ -158,11 +159,6 @@ module.exports = {
         where: { transaction_id: transaction.id },
       });
       transaction.dataValues.bookingDetail = bookingDetail;
-      transaction.dataValues.bookingDetail.map((bookingDetail) => {
-        bookingDetail.dataValues.visa = `${BASE_URL}/public/document/${bookingDetail.visa}`;
-        bookingDetail.dataValues.passport = `${BASE_URL}/public/document/${bookingDetail.passport}`;
-        bookingDetail.dataValues.izin = `${BASE_URL}/public/document/${bookingDetail.izin}`;
-      });
 
       return res.status(200).json({
         status: true,
@@ -234,7 +230,9 @@ module.exports = {
   //only admin can get all transaction
   getAll: async (req, res, next) => {
     try {
-      const transactions = await Transaction.findAll();
+      const transactions = await Transaction.findAll({
+        order: [["createdAt", "DESC"]],
+      });
 
       if (!transactions.length) {
         return res.status(200).json({
@@ -255,15 +253,6 @@ module.exports = {
         })
       );
 
-      //insert base_url/public/document/ to booking detail visa passport izin
-      result.map((transaction) => {
-        transaction.dataValues.bookingDetail.map((bookingDetail) => {
-          bookingDetail.dataValues.visa = `${BASE_URL}/public/document/${bookingDetail.visa}`;
-          bookingDetail.dataValues.passport = `${BASE_URL}/public/document/${bookingDetail.passport}`;
-          bookingDetail.dataValues.izin = `${BASE_URL}/public/document/${bookingDetail.izin}`;
-        });
-      });
-
       return res.status(200).json({
         status: true,
         message: "success get all transactions",
@@ -273,21 +262,22 @@ module.exports = {
       next(error);
     }
   },
-  uploadFile: async (req,res,next)=>{
-    try{
+  uploadFile: async (req, res, next) => {
+    try {
       const file = req.file.buffer.toString("base64");
-    
+
       const uploadedFile = await imagekit.upload({
-          file,
-          fileName: req.file.originalname
+        file,
+        fileName: req.file.originalname,
       });
 
       // return res.send(uploadedFile.url);
       return res.json({
-          url : uploadedFile.url
+        status: true,
+        url: uploadedFile.url,
       });
-    }catch(err){
-      next(error)
+    } catch (err) {
+      next(err);
     }
-  }
+  },
 };
