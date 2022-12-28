@@ -63,6 +63,15 @@ module.exports = {
       let flightCode = `${airline.name.substring(0, 2)}-${Date.now()}`
         .toUpperCase()
         .substring(0, 13);
+
+      //generate available seat based on total_seat_row as alphabet and total_seat_colum
+      const availableSeat = [];
+      for (let i = 0; i < airplane.total_seat_row; i++) {
+        for (let j = 1; j <= airplane.total_seat_colum; j++) {
+          availableSeat.push(`${String.fromCharCode(65 + i)}${j}`);
+        }
+      }
+
       const product = await Product.create({
         iata_from,
         iata_to,
@@ -74,6 +83,7 @@ module.exports = {
         airplane_id,
         stock: airplane.capacity,
         flightCode,
+        available_seat: availableSeat.join(","),
       });
 
       let productDetail = {
@@ -82,6 +92,9 @@ module.exports = {
         airplane: airplane.name,
         airline: airline.name,
       };
+
+      product.dataValues.available_seat =
+        product.dataValues.available_seat.split(",");
 
       const result = { ...product.dataValues, ...productDetail };
 
@@ -231,6 +244,7 @@ module.exports = {
             ["date_arrival", "ASC"],
           ],
         });
+
         //only show product that date_departure = date
         products = products.filter((product) => {
           return product.date_departure.toISOString().split("T")[0] === date;
@@ -283,6 +297,12 @@ module.exports = {
 
       products = products.slice(startIndex, endIndex);
 
+      products = products.map((product) => {
+        product.dataValues.available_seat =
+          product.dataValues.available_seat.split(",");
+        return product;
+      });
+
       return res.status(200).json({
         status: true,
         message: "List of products",
@@ -292,6 +312,7 @@ module.exports = {
       next(err);
     }
   },
+
   getOne: async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -338,6 +359,8 @@ module.exports = {
         city_to: airportTo.city,
       };
       const result = { ...product.dataValues, ...airport };
+
+      result.available_seat = result.available_seat.split(",");
 
       return res.status(200).json({
         status: true,

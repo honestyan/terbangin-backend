@@ -6,6 +6,7 @@ const {
 } = require("../models");
 const payment = require("../utils/payment");
 const imagekit = require("../utils/imagekit");
+const { checkPrime } = require("crypto");
 module.exports = {
   createTransaction: async (req, res, next) => {
     try {
@@ -18,6 +19,33 @@ module.exports = {
           status: false,
           message: "product not found",
           data: product,
+        });
+      }
+
+      //pax passenger validation
+      if (detail.length !== pax) {
+        return res.status(400).json({
+          status: false,
+          message: "pax and detail length not match",
+        });
+      }
+
+      //check available stock
+      if (product.stock < pax) {
+        return res.status(400).json({
+          status: false,
+          message: "stock not enough",
+        });
+      }
+
+      //check available_seat
+      const available_seat = product.available_seat.split(",");
+      const seat = detail.map((item) => item.seat);
+      const checkSeat = seat.every((item) => available_seat.includes(item));
+      if (!checkSeat) {
+        return res.status(400).json({
+          status: false,
+          message: "seat not available",
         });
       }
 
@@ -53,6 +81,21 @@ module.exports = {
         item.ticketNum = Math.floor(Math.random() * 1000000000);
         item.isCheckIn = false;
       });
+
+      //update available_seat
+      const newAvailableSeat = available_seat.filter(
+        (item) => !seat.includes(item)
+      );
+      const updateAvailableSeat = await Product.update(
+        { available_seat: newAvailableSeat.join(",") },
+        { where: { id: product_id } }
+      );
+      if (!updateAvailableSeat) {
+        return res.status(400).json({
+          status: false,
+          message: "failed update available seat",
+        });
+      }
 
       const createDetail = await BookingDetail.bulkCreate(detail);
 

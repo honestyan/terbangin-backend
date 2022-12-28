@@ -6,6 +6,7 @@ const transaction = require("./transaction");
 const airline = require("./airline");
 const airplane = require("./airplane");
 const notification = require("./notification");
+const eticket = require("./eticket");
 
 module.exports = {
   auth,
@@ -16,4 +17,5 @@ module.exports = {
   airline,
   airplane,
   notification,
+  eticket,
 };
