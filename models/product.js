@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       gate: DataTypes.INTEGER,
       airplane_id: DataTypes.INTEGER,
       stock: DataTypes.INTEGER,
+      flightCode: DataTypes.STRING,
     },
     {
       sequelize,

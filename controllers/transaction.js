@@ -50,6 +50,8 @@ module.exports = {
 
       detail.forEach((item) => {
         item.transaction_id = createTransaction.id;
+        item.ticketNum = Math.floor(Math.random() * 1000000000);
+        item.isCheckIn = false;
       });
 
       const createDetail = await BookingDetail.bulkCreate(detail);

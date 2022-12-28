@@ -60,6 +60,9 @@ module.exports = {
         });
       }
 
+      let flightCode = `${airline.name.substring(0, 2)}-${Date.now()}`
+        .toUpperCase()
+        .substring(0, 13);
       const product = await Product.create({
         iata_from,
         iata_to,
@@ -70,6 +73,7 @@ module.exports = {
         gate,
         airplane_id,
         stock: airplane.capacity,
+        flightCode,
       });
 
       let productDetail = {
