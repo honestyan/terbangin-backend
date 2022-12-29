@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require("../controllers");
 const mid = require("../helpers/middleware");
 
-router.get("/", controller.airport.getAll);
-router.get("/:id", controller.airport.getOne);
+router.get("/:invoice/", mid.mustLogin, controller.eticket.create);
+router.put("/checkIn/", controller.eticket.scan);
 
 module.exports = router;

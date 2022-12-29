@@ -3,11 +3,21 @@ let puppeteer = require("puppeteer");
 const QRCode = require("qrcode");
 
 module.exports = {
+  generateQR: async (content) => {
+    try {
+      const qr = await QRCode.toDataURL(content);
+      return qr;
+    } catch (err) {
+      return err;
+    }
+  },
+
   generatePDF: async (data) => {
-    let qr = await generateQR("https://www.google.com/");
+    let qr = await module.exports.generateQR(data.QRcontent);
+
     const renderedData = await ejs.renderFile(
-      `views/${FILE_NAME}.ejs`,
-      { ...DATA, qr },
+      `views/eticket/eticket.ejs`,
+      { ...data, qr },
       {
         async: true,
       }
@@ -23,16 +33,12 @@ module.exports = {
         format: "Letter",
         printBackground: true,
       });
-      res.writeHead(200, {
-        "Content-Disposition": `attachment; filename="${FILE_NAME}.pdf"`,
-        "Content-Type": "application/pdf",
-      });
 
       const download = Buffer.from(pdfFile, "base64");
       await browser.close();
-      res.end(download);
-    } catch (ex) {
-      console.log(ex);
+      return download;
+    } catch (err) {
+      return err;
     }
   },
 };

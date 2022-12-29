@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+    <head>
+        <style type="text/css">
+          <!--
+                        * {
+            font-family: "Lucida Sans Regular", sans-serif;
+            box-sizing: border-box;
+            color: #454545;
+            }
+
+            .kodebooking {
+            background-color: #2db48a;
+            color: white;
+            padding: 4px;
+            width: 200px;
+            position: absolute;
+            text-align: center;
+            border-radius: 50px;
+            }
+
+            html,
+            body {
+            margin: 0;
+            padding: 1rem;
+            font-family: sans-serif;
+            font-size: 1em;
+            line-height: 1.5;
+            }
+            .main-header {
+            background: #fff;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #959595;
+            }
+            .main-header h1 {
+            color: #2db48a;
+            }
+            .mh-logo {
+            margin: 0 0 -10px;
+            }
+            .main-nav ul {
+            margin: 0;
+            padding: 0;
+            }
+
+            img {
+            max-width: 100%;
+            height: auto;
+            }
+            .container {
+            width: 960px;
+            max-width: 100%;
+            padding: 20px;
+            margin: 0 auto;
+            }
+            .container li {
+            list-style: none;
+            }
+            .main-header .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: right;
+            flex-wrap: wrap;
+            }
+            .main-nav ul {
+            margin: 1em 0 0.5em;
+            text-align: center;
+            }
+            .main-nav li {
+            display: inline;
+            }
+
+            .tabel-penumpang {
+            border: 2px solid#999999;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            width: 100%;
+            table-layout: fixed;
+            }
+
+            .tabel-penumpang th {
+            padding: 12px 15px;
+            }
+
+            .tabel-penumpang td {
+            padding: 12px 15px;
+            }
+
+            .tabel-penumpang tbody tr {
+            border-bottom: 1px solid #dddddd;
+            }
+
+            .tabel-terbang {
+            border: 2px solid#999999;
+            overflow: hidden;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            width: 100%;
+            table-layout: fixed;
+            }
+
+            .tabel-terbang thead tr {
+            background-color: #2db48a;
+            }
+
+            .tabel-terbang thead th {
+            color: #175250;
+            text-align: left;
+            }
+
+            .tabel-terbang th,
+            .tabel-terbang td {
+            padding: 12px 15px;
+            }
+
+            hr {
+            background-color: #959595;
+            }
+
+            @media (min-width: 960px) {
+            .main-header .container {
+                justify-content: space-between;
+            }
+            }
+
+            -->
+    </style>
+    </head>
+    <body style="width: 892px; height: 1263px">
+		
+		<header class="main-header">
+			<div class="container">
+                <ul class="main-nav-list">
+                    <li>
+                        <h1 class="mh-logo">
+                            <img src="https://ik.imagekit.io/b8eemfn9w/logo_terbangin_KqwyYsMoy.png" alt="logo" width="100px">
+                        </h1>
+                    </li>
+                    <li>
+                        <p style="color: #2db48a;">Terbangin</p>
+                    </li>
+                </ul>
+                <h1>E-ticket Pesawat</h1>
+				<nav class="main-nav">
+					<ul class="main-nav-list">
+						<li>
+							Kode booking Anda:
+						</li>
+                        <li>
+							<div class="kodebooking"><%= transaction.payment_id %></div>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+        <h2>Rencana Penerbangan</h2>
+        <p style="color: #2ec9a7;">*Gratis Gift Voucher 75K untuk Diskon Car Transfer.</p>
+
+        <table class="tabel-terbang">
+            <thead>
+                <tr>
+                    <th colspan="5">Penerbangan Pergi || <%= parsed.departureDay %>, <%= parsed.departureDate %></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Flight Code<br><i><%= product.flightCode %></i></td>
+                    <td>
+                        <b>Lokasi & Jadwal Keberangkatan</b>
+                        <br><%= parsed.departureDate %>
+                        <br><%= parsed.departureTime %>
+                        <br><%= airport.from.city %> (<%= airport.from.iata %>)
+                        <br><%= airport.from.name %>
+                    </td>
+                    <td>
+                        <b>Lokasi & Jadwal Tujuan</b>
+                        <br><%= parsed.arrivalDate %>
+                        <br><%= parsed.arrivalTime %>
+                        <br><%= airport.to.city %> (<%= airport.to.iata %>)
+                        <br><%= airport.to.name %>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <img src="<%= product.airplane.airline.logo %>" alt="maskapai" width="100px">
+                            <h4><%= product.airplane.airline.name %></h4><br>
+                            <%= product.airplane.name %><br>
+                            Ekonomi
+                        </div>
+                        
+                    </td>
+                    <td><img src="<%= qr %>" alt="qr" width="100px"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- and so on... -->
+            </tbody>
+        </table>
+        
+        
+        <br>
+        <h2>Detail Penumpang</h2>
+
+        <table class="tabel-penumpang">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Penumpang</th>
+                    <th>Tipe Tiket</th>
+                    <th>No. Tiket</th>
+                    <th>No. Penerbangan</th>
+                    <th>Fasilitas</th>
+                </tr>
+            </thead>
+            <tbody>
+              <%
+              let i = 1;
+              bookingDetail.map((item) => { 
+                %>
+                <tr>
+                    <td data-th="Movie Title"><%= i++ %></td>
+                    <td data-th="Genre"><%= item.title %>. <%= item.passenger_name %></td>
+                    <td data-th="Year">Dewasa</td>
+                    <td data-th="Gross"><%= item.ticketNum %></td>
+                    <td data-th="Gross"><%= product.airplane.name %></td>
+                    <td data-th="Gross">10kg</td>
+                </tr>
+              <%  }) %>
+            </tbody>
+        </table>
+
+        <!--<p>&larr; Drag window (in editor or full page view) to see the effect. &rarr;</p>-->
+
+        <br>
+        <hr>
+
+        <h3>Catatan</h3>
+        <ol>
+            <li>Perlihatkan E-Tiket & Identitas Valid saat check-in.</li>
+            <li>Check-in paling lambat 90 menit sebelum keberangkatan.</li>
+            <li>Waktu tertera adalah waktu bandara setempat.</li>
+        </ol>
+
+	</body>
+</html>

@@ -76,12 +76,6 @@ module.exports = {
         });
       }
 
-      detail.forEach((item) => {
-        item.transaction_id = createTransaction.id;
-        item.ticketNum = Math.floor(Math.random() * 1000000000);
-        item.isCheckIn = false;
-      });
-
       //update available_seat
       const newAvailableSeat = available_seat.filter(
         (item) => !seat.includes(item)
@@ -97,6 +91,12 @@ module.exports = {
         });
       }
 
+      //insert trx id, ticket num, and isCheckIn to detail
+      detail.forEach((item) => {
+        item.transaction_id = createTransaction.id;
+        item.ticketNum = Math.floor(Math.random() * 1000000000);
+        item.isCheckIn = false;
+      });
       const createDetail = await BookingDetail.bulkCreate(detail);
 
       if (!createDetail) {
