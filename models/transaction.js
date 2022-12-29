@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         "refund",
         "fraud"
       ),
+      eticket: DataTypes.STRING,
     },
     {
       sequelize,

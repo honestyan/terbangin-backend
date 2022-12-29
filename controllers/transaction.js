@@ -6,7 +6,7 @@ const {
 } = require("../models");
 const payment = require("../utils/payment");
 const imagekit = require("../utils/imagekit");
-const { checkPrime } = require("crypto");
+
 module.exports = {
   createTransaction: async (req, res, next) => {
     try {
