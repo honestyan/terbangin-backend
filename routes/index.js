@@ -7,6 +7,7 @@ const transaction = require("./transaction");
 const notification = require("./notification");
 const airport = require("./airport");
 const eticket = require("./eticket");
+const profile = require("./profile");
 
 router.get("/", (req, res) => {
   return res.status(200).json({
@@ -22,5 +23,6 @@ router.use("/transaction", transaction);
 router.use("/notification", notification);
 router.use("/airport", airport);
 router.use("/eticket", eticket);
+router.use("/profile", profile);
 
 module.exports = router;

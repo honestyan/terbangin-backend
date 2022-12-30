@@ -7,6 +7,7 @@ const airline = require("./airline");
 const airplane = require("./airplane");
 const notification = require("./notification");
 const eticket = require("./eticket");
+const profile = require("./profile");
 
 module.exports = {
   auth,
@@ -18,4 +19,5 @@ module.exports = {
   airplane,
   notification,
   eticket,
+  profile,
 };
