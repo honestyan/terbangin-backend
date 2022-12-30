@@ -8,6 +8,7 @@ const {
 } = require("../models");
 const eticket = require("../utils/eticket");
 const moment = require("moment");
+const imagekit = require("../utils/imagekit");
 
 module.exports = {
   create: async (req, res, next) => {
@@ -126,14 +127,43 @@ module.exports = {
         airport,
       };
 
+      if (transaction.eticket) {
+        return res.json({
+          status: true,
+          url: transaction.eticket,
+        });
+      }
+
       const pdf = await eticket.generatePDF(data);
 
-      res.setHeader("Content-Type", "application/pdf");
-      res.setHeader(
-        "Content-Disposition",
-        `attachment; filename=${transaction.payment_id}.pdf`
+      if (!pdf) {
+        return res.status(500).json({
+          status: false,
+          message: "Failed to generate PDF",
+        });
+      }
+
+      const uploadedFile = await imagekit.upload({
+        file: pdf,
+        fileName: `e-ticket_${transaction.payment_id}.pdf`,
+      });
+
+      if (!uploadedFile) {
+        return res.status(500).json({
+          status: false,
+          message: "Failed to upload PDF",
+        });
+      }
+
+      const updated = await Transaction.update(
+        { eticket: uploadedFile.url },
+        { where: { id: transaction.id } }
       );
-      return res.send(pdf);
+
+      return res.json({
+        status: true,
+        url: uploadedFile.url,
+      });
     } catch (err) {
       next(err);
     }
