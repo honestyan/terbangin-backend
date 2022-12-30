@@ -160,6 +160,13 @@ module.exports = {
         { where: { id: transaction.id } }
       );
 
+      if (!updated) {
+        return res.status(500).json({
+          status: false,
+          message: "Failed to update transaction",
+        });
+      }
+
       return res.json({
         status: true,
         url: uploadedFile.url,
