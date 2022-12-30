@@ -115,7 +115,14 @@ module.exports = {
   login: async (req, res, next) => {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ where: { email: email } });
+      const emailRegex =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      var user = await User.findOne({ where: { email: email } });
+
+      if (!emailRegex.test(email)) {
+        var user = await User.findOne({ where: { username: email } });
+      }
 
       if (!user) {
         return res.status(404).json({
@@ -132,14 +139,10 @@ module.exports = {
         });
       }
 
-      const activeCheck = await User.findOne({
-        where: { email: email, isActive: true },
-      });
-
-      if (!activeCheck) {
+      if (!user.isActive) {
         return res.status(401).json({
           status: false,
-          message: "email not verified!",
+          message: "user inactive!",
         });
       }
 
