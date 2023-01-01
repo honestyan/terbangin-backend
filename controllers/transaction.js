@@ -191,7 +191,7 @@ module.exports = {
       const token = req.user;
       //only user can get their own transaction
       const transaction = await Transaction.findOne({
-        where: { id, user_id: token.id },
+        where: { payment_id: id, user_id: token.id },
       });
 
       if (!transaction) {
