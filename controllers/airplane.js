@@ -45,15 +45,15 @@ module.exports = {
         });
       }
 
-      let total_seat_colum = capacity / 6;
-      let total_seat_row = capacity / total_seat_colum;
+      let total_seat_row = capacity / 6;
+      let total_seat_column = capacity / total_seat_row;
 
       const airplane = await Airplane.create({
         name,
         capacity,
         airline_id,
         total_seat_row,
-        total_seat_colum,
+        total_seat_column,
       });
       return res.status(200).json({
         status: true,
@@ -111,8 +111,8 @@ module.exports = {
         });
       }
 
-      let total_seat_colum = capacity / 6;
-      let total_seat_row = capacity / total_seat_colum;
+      let total_seat_row = capacity / 6;
+      let total_seat_column = capacity / total_seat_row;
 
       const airplane = await Airplane.findByPk(id);
       if (!airplane) {
@@ -126,7 +126,7 @@ module.exports = {
         capacity,
         airline_id,
         total_seat_row,
-        total_seat_colum,
+        total_seat_column,
       });
       return res.status(200).json({
         status: true,

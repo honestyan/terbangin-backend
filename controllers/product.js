@@ -64,11 +64,11 @@ module.exports = {
         .toUpperCase()
         .substring(0, 13);
 
-      //generate available seat based on total_seat_row as alphabet and total_seat_colum
+      //generate available seat based on total_seat_row as alphabet and total_seat_column
       const availableSeat = [];
       for (let i = 0; i < airplane.total_seat_row; i++) {
-        for (let j = 1; j <= airplane.total_seat_colum; j++) {
-          availableSeat.push(`${String.fromCharCode(65 + i)}${j}`);
+        for (let j = 1; j <= airplane.total_seat_column; j++) {
+          availableSeat.push(`${j}${String.fromCharCode(65 + i)}`);
         }
       }
 
