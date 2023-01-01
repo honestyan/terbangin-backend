@@ -45,8 +45,8 @@ module.exports = {
         });
       }
 
-      let total_seat_row = capacity / 6;
-      let total_seat_column = capacity / total_seat_row;
+      let total_seat_column = capacity / 6;
+      let total_seat_row = capacity / total_seat_column;
 
       const airplane = await Airplane.create({
         name,
@@ -111,8 +111,8 @@ module.exports = {
         });
       }
 
-      let total_seat_row = capacity / 6;
-      let total_seat_column = capacity / total_seat_row;
+      let total_seat_column = capacity / 6;
+      let total_seat_row = capacity / total_seat_column;
 
       const airplane = await Airplane.findByPk(id);
       if (!airplane) {
