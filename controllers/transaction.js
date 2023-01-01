@@ -3,6 +3,8 @@ const {
   Product,
   BookingDetail,
   Notification,
+  Airline,
+  Airplane,
 } = require("../models");
 const payment = require("../utils/payment");
 const imagekit = require("../utils/imagekit");
@@ -204,6 +206,33 @@ module.exports = {
         where: { transaction_id: transaction.id },
       });
       transaction.dataValues.bookingDetail = bookingDetail;
+
+      const product = await Product.findOne({
+        where: { id: transaction.product_id },
+        attributes: {
+          exclude: ["createdAt", "updatedAt"],
+        },
+        include: [
+          {
+            model: Airplane,
+            as: "airplane",
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+            include: [
+              {
+                model: Airline,
+                as: "airline",
+                attributes: {
+                  exclude: ["createdAt", "updatedAt"],
+                },
+              },
+            ],
+          },
+        ],
+      });
+
+      transaction.dataValues.product = product;
 
       return res.status(200).json({
         status: true,
