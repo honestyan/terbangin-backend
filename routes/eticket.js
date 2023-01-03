@@ -12,5 +12,6 @@ router.get(
   controller.eticket.create
 );
 router.put("/checkIn/", controller.eticket.scan);
+router.post("/checkIn/", controller.eticket.checkIn);
 
 module.exports = router;

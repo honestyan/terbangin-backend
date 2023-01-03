@@ -9,6 +9,7 @@ const {
 const eticket = require("../utils/eticket");
 const moment = require("moment");
 const imagekit = require("../utils/imagekit");
+const { BASE_URL_STAGE } = process.env;
 
 module.exports = {
   create: async (req, res, next) => {
@@ -86,7 +87,7 @@ module.exports = {
       bookingDetail.forEach((item) => {
         passengerContent += `|${item.title} ${item.passenger_name}#${item.nik}#${item.seat}`;
       });
-      let QRcontent = `${flightContent}${passengerContent}`;
+      let QRcontent = `${BASE_URL_STAGE}/checkin?code=${flightContent}${passengerContent}`;
 
       //parsing date
       const departureDate = moment(product.date_departure)
@@ -273,6 +274,92 @@ module.exports = {
         { isCheckIn: true },
         { where: { transaction_id: transaction.id } }
       );
+
+      return res.status(200).json({
+        status: true,
+        message: "Check in success",
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  checkIn: async (req, res, next) => {
+    const { flightCode, ticketNum, passenger_name } = req.body;
+    try {
+      const getTicketNum = await BookingDetail.findOne({
+        where: { ticketNum },
+      });
+
+      if (!getTicketNum) {
+        return res.status(401).json({
+          status: false,
+          message: "Ticket number not found",
+        });
+      }
+
+      const transaction = await Transaction.findOne({
+        where: { id: getTicketNum.transaction_id },
+        include: [
+          {
+            model: Product,
+            as: "product",
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+            include: [
+              {
+                model: Airplane,
+                as: "airplane",
+                attributes: {
+                  exclude: ["createdAt", "updatedAt"],
+                },
+              },
+            ],
+          },
+        ],
+      });
+
+      if (!transaction) {
+        return res.status(401).json({
+          status: false,
+          message: "Transaction not found",
+        });
+      }
+
+      if (transaction.status !== "settlement") {
+        return res.status(401).json({
+          status: false,
+          message: "Transaction not paid",
+        });
+      }
+
+      if (flightCode !== transaction.product.flightCode) {
+        return res.status(401).json({
+          status: false,
+          message: "Flight code not match",
+        });
+      }
+
+      if (
+        passenger_name.toLowerCase() !==
+        getTicketNum.passenger_name.toLowerCase()
+      ) {
+        return res.status(401).json({
+          status: false,
+          message: "Passenger name not match",
+        });
+      }
+
+      if (getTicketNum.isCheckIn) {
+        return res.status(401).json({
+          status: false,
+          message: "Already check in",
+        });
+      }
+
+      //update isCheckIn in bookingdetail
+      await BookingDetail.update({ isCheckIn: true }, { where: { ticketNum } });
 
       return res.status(200).json({
         status: true,
