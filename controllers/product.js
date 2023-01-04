@@ -214,7 +214,7 @@ module.exports = {
 
   getAll: async (req, res, next) => {
     try {
-      const { iata_from, iata_to, date } = req.query;
+      const { iata_from, iata_to, date, price } = req.query;
       if (iata_from && iata_to && date) {
         var products = await Product.findAll({
           where: {
@@ -243,11 +243,6 @@ module.exports = {
             ["date_departure", "ASC"],
             ["date_arrival", "ASC"],
           ],
-        });
-
-        //only show product that date_departure = date
-        products = products.filter((product) => {
-          return product.date_departure.toISOString().split("T")[0] === date;
         });
       } else {
         var products = await Product.findAll({
@@ -281,6 +276,13 @@ module.exports = {
           status: false,
           message: "Product not found",
         });
+      }
+
+      //filter by price
+      if (price == "asc") {
+        products = products.sort((a, b) => a.price - b.price);
+      } else if (price == "desc") {
+        products = products.sort((a, b) => b.price - a.price);
       }
 
       //pagination
