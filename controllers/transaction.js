@@ -152,10 +152,19 @@ module.exports = {
   getTrxByUser: async (req, res, next) => {
     try {
       const token = req.user;
-      const transactions = await Transaction.findAll({
-        where: { user_id: token.id },
-        order: [["createdAt", "DESC"]],
-      });
+      const { status } = req.query;
+
+      if (!status || status == "") {
+        var transactions = await Transaction.findAll({
+          where: { user_id: token.id },
+          order: [["createdAt", "DESC"]],
+        });
+      } else {
+        var transactions = await Transaction.findAll({
+          where: { user_id: token.id, status },
+          order: [["createdAt", "DESC"]],
+        });
+      }
 
       if (!transactions.length) {
         return res.status(200).json({
