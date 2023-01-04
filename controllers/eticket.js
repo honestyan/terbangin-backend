@@ -156,6 +156,20 @@ module.exports = {
         });
       }
 
+      const qr = await eticket.generateQR(QRcontent);
+
+      const uploadedQR = await imagekit.upload({
+        file: qr,
+        fileName: `qr_${transaction.payment_id}.png`,
+      });
+
+      if (!uploadedQR) {
+        return res.status(500).json({
+          status: false,
+          message: "Failed to upload QR",
+        });
+      }
+
       const updated = await Transaction.update(
         { eticket: uploadedFile.url },
         { where: { id: transaction.id } }
@@ -167,6 +181,11 @@ module.exports = {
           message: "Failed to update transaction",
         });
       }
+
+      const updatedQR = await Transaction.update(
+        { qr: uploadedQR.url },
+        { where: { id: transaction.id } }
+      );
 
       return res.json({
         status: true,

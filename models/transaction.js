@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         "fraud"
       ),
       eticket: DataTypes.STRING,
+      qr: DataTypes.STRING,
     },
     {
       sequelize,
