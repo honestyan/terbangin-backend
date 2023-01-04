@@ -381,6 +381,9 @@ module.exports = {
         return res.status(401).json({
           status: false,
           message: "Already check in",
+          data: {
+            payment_id: transaction.payment_id,
+          },
         });
       }
 
@@ -390,6 +393,9 @@ module.exports = {
       return res.status(200).json({
         status: true,
         message: "Check in success",
+        data: {
+          payment_id: transaction.payment_id,
+        },
       });
     } catch (err) {
       next(err);
