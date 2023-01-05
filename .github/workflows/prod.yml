@@ -1,4 +1,4 @@
-name: Deploy to Railway Development
+name: Deploy to Railway Prod
 
 on:
   push:
